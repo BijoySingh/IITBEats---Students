@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="drawer_menu">Menu</string>
+    <string name="drawer_shops">Shops</string>
+    <string name="drawer_orders">Orders</string>
+    <string name="drawer_bills">Bills</string>
+    <string name="drawer_login">Login</string>
+    <string name="drawer_logout">Logout</string>
+</resources>

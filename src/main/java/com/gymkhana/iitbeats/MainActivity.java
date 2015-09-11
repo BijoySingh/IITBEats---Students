@@ -1,0 +1,109 @@
+package com.gymkhana.iitbeats;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import com.gymkhana.iitbeats.fragments.BlankFragment;
+import com.gymkhana.iitbeats.fragments.DrawerFragment;
+import com.gymkhana.iitbeats.items.DrawerItem;
+import com.gymkhana.iitbeats.utils.Functions;
+
+public class MainActivity extends ActionBarActivity implements DrawerFragment.OnFragmentInteractionListener {
+
+    private static final Integer START_STATE = 0;
+
+    private Context mContext;
+    private DrawerFragment mDrawerFragment;
+    private Integer mFragmentPosition;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mContext = this;
+
+        startupFunctions();
+        firstTimeSetup();
+
+        Functions.setActionBar(this);
+        Functions.setActionBarTitle(this, getString(R.string.drawer_menu));
+
+        mDrawerFragment = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_bar);
+        mDrawerFragment.setup((DrawerLayout) findViewById(R.id.drawer_layout));
+
+        ListView lv = mDrawerFragment.setupList();
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mDrawerFragment.mDrawerLayout.closeDrawers();
+                DrawerItem item = (DrawerItem) parent.getItemAtPosition(position);
+            }
+        });
+
+        displayFragment(START_STATE);
+    }
+
+    public void displayFragment(int position) {
+        Fragment fragment = null;
+        Bundle bundle = new Bundle();
+        mFragmentPosition = position;
+
+        fragment = new BlankFragment();
+        fragment.setArguments(bundle);
+
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.page_fragment, fragment)
+                    .commit();
+            mDrawerFragment.mDrawerLayout.closeDrawers();
+        } else {
+            Log.e("MainActivity", "Error in creating fragment");
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    public void startupFunctions() {
+    }
+
+    public void firstTimeSetup() {
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            if (mDrawerFragment.mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+                mDrawerFragment.mDrawerLayout.closeDrawers();
+            } else {
+                mDrawerFragment.mDrawerLayout.openDrawer(Gravity.LEFT);
+            }
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+}
+
