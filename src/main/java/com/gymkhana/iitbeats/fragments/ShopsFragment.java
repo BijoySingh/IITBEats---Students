@@ -48,16 +48,8 @@ public class ShopsFragment extends RefreshBasedFragment<ShopsItem> {
 
     @Override
     public void updateList(List<ShopsItem> list) {
-        if (list == null) {
-            return;
-        }
-
-        try {
-            mValues = list;
-            mAdapter.notifyDataSetChanged();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        super.updateList(list);
+        mAdapter.notifyDataSetChanged();
     }
 
 }

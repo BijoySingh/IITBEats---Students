@@ -48,16 +48,8 @@ public class CategoryFragment extends RefreshBasedFragment<CategoryItem> {
 
     @Override
     public void updateList(List<CategoryItem> list) {
-        if (list == null) {
-            return;
-        }
-
-        try {
-            mValues = list;
-            mAdapter.notifyDataSetChanged();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        super.updateList(list);
+        mAdapter.notifyDataSetChanged();
     }
 
 }

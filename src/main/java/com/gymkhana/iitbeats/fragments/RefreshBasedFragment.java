@@ -28,7 +28,15 @@ public abstract class RefreshBasedFragment<T> extends Fragment {
     List<T> mValues = new ArrayList<>();
 
     public void updateList(List<T> list) {
-        return;
+        if (list == null) {
+            return;
+        }
+
+        try {
+            mValues = list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void stopRefreshIndicator() {

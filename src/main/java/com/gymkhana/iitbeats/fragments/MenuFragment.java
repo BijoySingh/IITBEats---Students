@@ -48,17 +48,8 @@ public class MenuFragment extends RefreshBasedFragment<MenuItem> {
 
     @Override
     public void updateList(List<MenuItem> list) {
-        if (list == null) {
-            return;
-        }
-
-        try {
-            mValues = list;
-            mAdapter.notifyDataSetChanged();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        super.updateList(list);
+        mAdapter.notifyDataSetChanged();
     }
-
 }
 

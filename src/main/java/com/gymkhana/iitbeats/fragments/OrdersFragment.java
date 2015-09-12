@@ -48,16 +48,8 @@ public class OrdersFragment extends RefreshBasedFragment<OrdersItem> {
 
     @Override
     public void updateList(List<OrdersItem> list) {
-        if (list == null) {
-            return;
-        }
-
-        try {
-            mValues = list;
-            mAdapter.notifyDataSetChanged();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        super.updateList(list);
+        mAdapter.notifyDataSetChanged();
     }
 
 }

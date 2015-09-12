@@ -48,16 +48,8 @@ public class BillsFragment extends RefreshBasedFragment<BillsItem> {
 
     @Override
     public void updateList(List<BillsItem> list) {
-        if (list == null) {
-            return;
-        }
-
-        try {
-            mValues = list;
-            mAdapter.notifyDataSetChanged();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        super.updateList(list);
+        mAdapter.notifyDataSetChanged();
     }
 
 }
