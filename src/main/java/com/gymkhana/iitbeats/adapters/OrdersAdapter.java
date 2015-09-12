@@ -28,7 +28,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersViewHolder> {
     @Override
     public OrdersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.drawer_item, parent, false);
+                .inflate(R.layout.orders_item, parent, false);
         OrdersViewHolder vh = new OrdersViewHolder(v);
         return vh;
     }
