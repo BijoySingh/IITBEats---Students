@@ -48,6 +48,8 @@ public class ShopsAdapter extends RecyclerView.Adapter<ShopsViewHolder> {
         } else {
             holder.status.setColorFilter(Color.parseColor("#9E9E9E"));
         }
+
+        holder.setCallListener(mContext, data.phone);
     }
 
     @Override
