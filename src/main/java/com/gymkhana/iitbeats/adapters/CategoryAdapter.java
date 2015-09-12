@@ -46,7 +46,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
         holder.title.setText(data.name);
         ImageAware imageAware = new ImageViewAware(holder.thumbnail, false);
         mImageLoader.displayImage(data.image, imageAware);
-        
+
     }
 
     @Override
