@@ -1,6 +1,7 @@
 package com.gymkhana.iitbeats.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,8 +40,7 @@ public class ShopsAdapter extends RecyclerView.Adapter<ShopsViewHolder> {
         final ShopsItem data = mFragment.getValues().get(position);
         holder.title.setText(data.name);
         holder.address.setText(data.address);
-        holder.owner.setText(data.shop_owner.getName());
-        holder.call.setColorFilter(data.getStatusColor());
+        holder.call.setColorFilter(Color.WHITE);
         holder.setCallListener(mContext, data.phone);
     }
 

@@ -35,12 +35,12 @@ public class ShopsFragment extends RefreshBasedFragment<ShopsItem> {
         refreshList();
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_shops));
-   
+
         return rootView;
     }
 
     public void setupRecyclerView(View rootView) {
-        initLinearRecyclerView(rootView);
+        initGridRecyclerView(rootView, 2);
         mAdapter = new ShopsAdapter(mContext, this);
         mRecyclerView.setAdapter(mAdapter);
     }
