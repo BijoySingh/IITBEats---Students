@@ -78,6 +78,7 @@ public class ApiResponseUtility {
         for (MenuItem menu_item : menu) {
             if (!categories.contains(menu_item.food_item.category.id)) {
                 list.add(menu_item.food_item.category);
+                categories.add(menu_item.food_item.category.id);
             }
         }
         return list;
