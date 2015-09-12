@@ -3,6 +3,8 @@ package com.gymkhana.iitbeats.items;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by BijoySingh on 9/12/2015.
@@ -22,6 +24,16 @@ public class MenuItem implements Serializable {
         price = json.getDouble(JsonKeys.PRICE);
         is_available = json.getBoolean(JsonKeys.AVAILABLE);
         food_item = new FoodItem(json.getJSONObject(JsonKeys.FOOD));
+    }
+
+    public static List<MenuItem> filterMenu(List<MenuItem> source, Integer category) {
+        List<MenuItem> list = new ArrayList<>();
+        for (MenuItem item : source) {
+            if (item.food_item.categories.contains(category)) {
+                list.add(item);
+            }
+        }
+        return list;
     }
 
     public static final class JsonKeys {
