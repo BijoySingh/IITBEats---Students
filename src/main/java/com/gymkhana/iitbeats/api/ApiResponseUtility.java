@@ -10,14 +10,13 @@ import com.gymkhana.iitbeats.items.MenuItem;
 import com.gymkhana.iitbeats.items.OrdersItem;
 import com.gymkhana.iitbeats.items.ShopsItem;
 import com.gymkhana.iitbeats.utils.DataType;
+import com.gymkhana.iitbeats.utils.SessionVariables;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by BijoySingh on 9/12/2015.
@@ -31,27 +30,48 @@ public class ApiResponseUtility {
 
         try {
             if (item.data_type == DataType.MENU) {
-                fragment.updateList(parseMenuItem(response));
+                getShopMenu(response);
+                fragment.updateList(SessionVariables.mMenuItems);
             } else if (item.data_type == DataType.CATEGORY) {
-                fragment.updateList(filterCategories(parseMenuItem(response)));
+                getShopMenu(response);
+                fragment.updateList(SessionVariables.mCategoryItems);
             } else if (item.data_type == DataType.SHOPS) {
-                fragment.updateList(parseShopsItem(response));
+                SessionVariables.mShopsItems = parseShopsItem(response);
+                fragment.updateList(SessionVariables.mShopsItems);
             } else if (item.data_type == DataType.ORDERS) {
-                fragment.updateList(parseOrdersItem(response));
+                SessionVariables.mOrderItems = parseOrdersItem(response);
+                fragment.updateList(SessionVariables.mOrderItems);
             } else if (item.data_type == DataType.BILLS) {
-                fragment.updateList(parseBillsItem(response));
+                SessionVariables.mBillsItems = parseBillsItem(response);
+                fragment.updateList(SessionVariables.mBillsItems);
             }
         } catch (Exception error) {
             Log.e(ApiResponseUtility.class.getSimpleName(), "Parsing Error", error);
         }
     }
 
+    public static final void getShopMenu(String response) throws Exception {
+        SessionVariables.mMenuItems = parseMenuItem(response);
+        SessionVariables.mCategoryItems = parseCategoryItem(response);
+    }
+
     public static final List<MenuItem> parseMenuItem(String response) throws Exception {
         List<MenuItem> list = new ArrayList<>();
-        JSONArray data = new JSONObject(response).getJSONArray("results");
+        JSONArray data = new JSONObject(response).getJSONArray("menu");
         for (int index = 0; index < data.length(); index++) {
             JSONObject json = data.getJSONObject(index);
             MenuItem item = new MenuItem(json);
+            list.add(item);
+        }
+        return list;
+    }
+
+    public static final List<CategoryItem> parseCategoryItem(String response) throws Exception {
+        List<CategoryItem> list = new ArrayList<>();
+        JSONArray data = new JSONObject(response).getJSONArray("categories");
+        for (int index = 0; index < data.length(); index++) {
+            JSONObject json = data.getJSONObject(index);
+            CategoryItem item = new CategoryItem(json);
             list.add(item);
         }
         return list;
@@ -86,18 +106,6 @@ public class ApiResponseUtility {
             JSONObject json = data.getJSONObject(index);
             BillsItem item = new BillsItem(json);
             list.add(item);
-        }
-        return list;
-    }
-
-    public static final List<CategoryItem> filterCategories(List<MenuItem> menu) {
-        Set<Integer> categories = new HashSet<>();
-        List<CategoryItem> list = new ArrayList<>();
-        for (MenuItem menu_item : menu) {
-            if (!categories.contains(menu_item.food_item.category.id)) {
-                list.add(menu_item.food_item.category);
-                categories.add(menu_item.food_item.category.id);
-            }
         }
         return list;
     }
