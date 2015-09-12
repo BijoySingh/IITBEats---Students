@@ -1,5 +1,10 @@
 package com.gymkhana.iitbeats.items;
 
+import android.text.TextUtils;
+
+import com.gymkhana.iitbeats.R;
+import com.gymkhana.iitbeats.utils.SessionVariables;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -26,6 +31,22 @@ public class FoodItem implements Serializable {
         for (int index = 0; index < categories_array.length(); index++) {
             categories.add(categories_array.getInt(index));
         }
+    }
+
+    public Integer getVegetarianResource() {
+        if (is_vegetarian) {
+            return R.drawable.vegetarian;
+        } else {
+            return R.drawable.non_vegetarian;
+        }
+    }
+
+    public String getCategories() {
+        List<String> list = new ArrayList<>();
+        for (int category_id : categories) {
+            list.add(SessionVariables.mCategoryMapping.get(category_id).name);
+        }
+        return TextUtils.join(", ", list);
     }
 
     public static final class JsonKeys {

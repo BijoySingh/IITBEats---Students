@@ -16,6 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -55,6 +56,11 @@ public class ApiResponseUtility {
     public static final void getShopMenu(String response) throws Exception {
         SessionVariables.mMenuItems = parseMenuItem(response);
         SessionVariables.mCategoryItems = parseCategoryItem(response);
+
+        SessionVariables.mCategoryMapping = new HashMap<>();
+        for (CategoryItem item : SessionVariables.mCategoryItems) {
+            SessionVariables.mCategoryMapping.put(item.id, item);
+        }
     }
 
     public static final List<MenuItem> parseMenuItem(String response) throws Exception {

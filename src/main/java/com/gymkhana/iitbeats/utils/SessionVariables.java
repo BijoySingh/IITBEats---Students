@@ -7,6 +7,7 @@ import com.gymkhana.iitbeats.items.OrdersItem;
 import com.gymkhana.iitbeats.items.ShopsItem;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by BijoySingh on 9/12/2015.
@@ -21,4 +22,5 @@ public class SessionVariables {
     public static List<OrdersItem> mOrderItems;
     public static List<BillsItem> mBillsItems;
 
+    public static Map<Integer, CategoryItem> mCategoryMapping;
 }

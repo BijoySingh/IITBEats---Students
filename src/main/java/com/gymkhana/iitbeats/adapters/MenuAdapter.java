@@ -5,17 +5,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.URLUtil;
 
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.fragments.RefreshBasedFragment;
 import com.gymkhana.iitbeats.items.MenuItem;
+import com.gymkhana.iitbeats.utils.Functions;
 import com.gymkhana.iitbeats.viewholder.MenuViewHolder;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 
 /**
  * Created by BijoySingh on 9/12/2015.
  */
 public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
 
+    private final ImageLoader mImageLoader;
     private Context mContext;
     private RefreshBasedFragment<MenuItem> mFragment;
 
@@ -23,6 +29,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
                        RefreshBasedFragment<MenuItem> fragment) {
         mContext = context;
         mFragment = fragment;
+        mImageLoader = Functions.loadImageLoader(context);
     }
 
     @Override
@@ -37,7 +44,15 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
     public void onBindViewHolder(MenuViewHolder holder, final int position) {
 
         final MenuItem data = mFragment.getValues().get(position);
+        holder.name.setText(data.food_item.name);
+        holder.categories.setText(data.food_item.getCategories());
+        holder.price.setText("\u20B9 " + data.price.toString());
+        holder.vegetarian.setImageResource(data.food_item.getVegetarianResource());
 
+        if (URLUtil.isValidUrl(data.food_item.image)) {
+            ImageAware imageAware = new ImageViewAware(holder.thumbnail, false);
+            mImageLoader.displayImage(data.food_item.image, imageAware);
+        }
     }
 
     @Override
