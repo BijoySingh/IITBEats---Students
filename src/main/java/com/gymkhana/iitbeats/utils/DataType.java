@@ -8,4 +8,5 @@ public class DataType {
     public static final Integer SHOPS = 1;
     public static final Integer ORDERS = 2;
     public static final Integer BILLS = 3;
+    public static final Integer CATEGORY = 4;
 }

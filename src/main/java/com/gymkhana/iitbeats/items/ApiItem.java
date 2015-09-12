@@ -46,6 +46,11 @@ public class ApiItem {
                     ServerUrls.getShops(),
                     Filenames.getFilename(Filenames.SHOPS),
                     data_type);
+        } else if (data_type == DataType.CATEGORY) {
+            return new ApiItem(context,
+                    ServerUrls.getMenu(extra),
+                    Filenames.getFilename(Filenames.MENU),
+                    data_type);
         }
         return null;
     }

@@ -29,7 +29,7 @@ public class CategoryFragment extends RefreshBasedFragment<CategoryItem> {
         View rootView = inflater.inflate(R.layout.recycler_layout, container, false);
         setupRecyclerView(rootView);
 
-        mApiItem = ApiItem.getInstance(mContext, DataType.MENU, null);
+        mApiItem = ApiItem.getInstance(mContext, DataType.CATEGORY, null);
         String cache = Functions.offlineDataReader(getActivity(), mApiItem.filename);
         JsonParser.parseResponse(cache, mApiItem, this);
         refreshList();

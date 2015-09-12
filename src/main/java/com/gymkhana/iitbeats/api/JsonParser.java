@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.gymkhana.iitbeats.fragments.RefreshBasedFragment;
 import com.gymkhana.iitbeats.items.ApiItem;
+import com.gymkhana.iitbeats.utils.DataType;
 
 /**
  * Created by BijoySingh on 9/12/2015.
@@ -14,7 +15,9 @@ public class JsonParser {
             return;
 
         try {
+            if (item.data_type == DataType.MENU) {
 
+            }
         } catch (Exception error) {
             Log.e(JsonParser.class.getSimpleName(), "Parsing Error", error);
         }
