@@ -26,8 +26,6 @@ import com.gymkhana.iitbeats.utils.Functions;
 
 public class MainActivity extends ActionBarActivity implements DrawerFragment.OnFragmentInteractionListener {
 
-    private static final Integer START_STATE = 0;
-
     private Context mContext;
     private DrawerFragment mDrawerFragment;
     private Integer mFragmentPosition;
@@ -65,7 +63,7 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
             }
         });
 
-        displayFragment(START_STATE);
+        displayFragment(DrawerItem.Tags.CATEGORIES);
     }
 
     public void displayFragment(int id) {

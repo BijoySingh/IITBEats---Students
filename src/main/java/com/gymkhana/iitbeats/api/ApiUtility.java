@@ -26,6 +26,7 @@ public class ApiUtility {
                         .Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        fragment.stopRefreshIndicator();
                         ApiResponseUtility.parseResponse(response, item, fragment);
                         if (item.filename != null) {
                             Functions.offlineDataWriter(item.context, item.filename,
@@ -35,6 +36,7 @@ public class ApiUtility {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        fragment.stopRefreshIndicator();
                         error.printStackTrace();
                         Log.e(LOG_KEY, Functions.showVolleyError(error));
                     }

@@ -8,7 +8,7 @@ public class ServerUrls {
     public static final String DELIMITER = "/";
 
     public static final String getUrl(String tag) {
-        return BASE_URL + tag + DELIMITER;
+        return BASE_URL + tag;
     }
 
     public static final String getShops() {
