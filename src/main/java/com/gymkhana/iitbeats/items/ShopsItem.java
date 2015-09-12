@@ -1,6 +1,6 @@
 package com.gymkhana.iitbeats.items;
 
-import android.graphics.Color;
+import com.gymkhana.iitbeats.utils.Colors;
 
 import org.json.JSONObject;
 
@@ -27,10 +27,10 @@ public class ShopsItem {
 
     public Integer getStatusColor() {
         if (status) {
-            return Color.parseColor("#388E3C");
+            return Colors.AVAILABLE;
         }
 
-        return Color.parseColor("#9E9E9E");
+        return Colors.UNAVAILABLE;
     }
 
     public static final class JsonKeys {

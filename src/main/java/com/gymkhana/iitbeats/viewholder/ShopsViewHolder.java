@@ -22,7 +22,7 @@ public class ShopsViewHolder extends RecyclerView.ViewHolder {
         address = (TextView) view.findViewById(R.id.address);
         owner = (TextView) view.findViewById(R.id.owner);
         phone = (TextView) view.findViewById(R.id.phone);
-        status = (ImageView) view.findViewById(R.id.status);
+        status = (ImageView) view.findViewById(R.id.call);
         call = (ImageView) view.findViewById(R.id.call);
     }
 
