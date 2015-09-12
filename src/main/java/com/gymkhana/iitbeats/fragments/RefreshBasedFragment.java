@@ -3,6 +3,7 @@ package com.gymkhana.iitbeats.fragments;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -43,13 +44,12 @@ public abstract class RefreshBasedFragment<T> extends Fragment {
         mSwipeRefreshLayout.setRefreshing(false);
     }
 
-    public void initializeRecyclerView(View rootView) {
+    private void initRecyclerView(View rootView) {
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(false);
+    }
 
-        mLayoutManager = new LinearLayoutManager(mContext);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
+    private void initSwipeRefreshLayout(View rootView) {
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -59,6 +59,20 @@ public abstract class RefreshBasedFragment<T> extends Fragment {
         });
         mSwipeRefreshLayout.setColorSchemeResources(R.color.accent_color, R.color.primary_color);
         mSwipeRefreshLayout.setEnabled(true);
+    }
+
+    public void initLinearRecyclerView(View rootView) {
+        initRecyclerView(rootView);
+        mLayoutManager = new LinearLayoutManager(mContext);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        initSwipeRefreshLayout(rootView);
+    }
+
+    public void initGridRecyclerView(View rootView, int spanCount) {
+        initRecyclerView(rootView);
+        mLayoutManager = new GridLayoutManager(mContext, spanCount);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        initSwipeRefreshLayout(rootView);
     }
 
     public void refreshList() {

@@ -41,7 +41,7 @@ public class OrdersFragment extends RefreshBasedFragment<OrdersItem> {
     }
 
     public void setupRecyclerView(View rootView) {
-        initializeRecyclerView(rootView);
+        initLinearRecyclerView(rootView);
         mAdapter = new OrdersAdapter(mContext, this);
         mRecyclerView.setAdapter(mAdapter);
     }

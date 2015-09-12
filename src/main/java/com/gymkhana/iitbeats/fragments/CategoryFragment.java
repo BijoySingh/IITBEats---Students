@@ -41,7 +41,7 @@ public class CategoryFragment extends RefreshBasedFragment<CategoryItem> {
     }
 
     public void setupRecyclerView(View rootView) {
-        initializeRecyclerView(rootView);
+        initGridRecyclerView(rootView, 2);
         mAdapter = new CategoryAdapter(mContext, this);
         mRecyclerView.setAdapter(mAdapter);
     }

@@ -41,7 +41,7 @@ public class BillsFragment extends RefreshBasedFragment<BillsItem> {
     }
 
     public void setupRecyclerView(View rootView) {
-        initializeRecyclerView(rootView);
+        initLinearRecyclerView(rootView);
         mAdapter = new BillsAdapter(mContext, this);
         mRecyclerView.setAdapter(mAdapter);
     }

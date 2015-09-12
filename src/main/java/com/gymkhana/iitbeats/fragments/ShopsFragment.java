@@ -41,7 +41,7 @@ public class ShopsFragment extends RefreshBasedFragment<ShopsItem> {
     }
 
     public void setupRecyclerView(View rootView) {
-        initializeRecyclerView(rootView);
+        initLinearRecyclerView(rootView);
         mAdapter = new ShopsAdapter(mContext, this);
         mRecyclerView.setAdapter(mAdapter);
     }

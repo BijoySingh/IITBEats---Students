@@ -41,7 +41,7 @@ public class MenuFragment extends RefreshBasedFragment<MenuItem> {
     }
 
     public void setupRecyclerView(View rootView) {
-        initializeRecyclerView(rootView);
+        initLinearRecyclerView(rootView);
         mAdapter = new MenuAdapter(mContext, this);
         mRecyclerView.setAdapter(mAdapter);
     }
