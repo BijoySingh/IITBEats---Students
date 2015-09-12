@@ -14,13 +14,14 @@ import com.gymkhana.iitbeats.utils.Functions;
  */
 public class ShopsViewHolder extends RecyclerView.ViewHolder {
     public TextView title, address;
-    public ImageView call;
+    public ImageView call, thumbnail;
 
     public ShopsViewHolder(View view) {
         super(view);
         title = (TextView) view.findViewById(R.id.title);
         address = (TextView) view.findViewById(R.id.address);
         call = (ImageView) view.findViewById(R.id.call);
+        thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
     }
 
     public void setCallListener(final Context context, final String phone) {

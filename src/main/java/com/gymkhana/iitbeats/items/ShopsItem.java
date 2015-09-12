@@ -1,5 +1,6 @@
 package com.gymkhana.iitbeats.items;
 
+import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.utils.Colors;
 
 import org.json.JSONObject;
@@ -31,6 +32,23 @@ public class ShopsItem {
         }
 
         return Colors.UNAVAILABLE;
+    }
+
+    public Integer getStoreImage(Integer position) {
+        switch (position % 6) {
+            case 1:
+                return R.drawable.store_1;
+            case 2:
+                return R.drawable.store_2;
+            case 3:
+                return R.drawable.store_3;
+            case 4:
+                return R.drawable.store_4;
+            case 5:
+                return R.drawable.store_5;
+            default:
+                return R.drawable.store_0;
+        }
     }
 
     public static final class JsonKeys {
