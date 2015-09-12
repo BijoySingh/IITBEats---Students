@@ -9,17 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gymkhana.iitbeats.R;
-import com.gymkhana.iitbeats.adapters.BillsAdapter;
-import com.gymkhana.iitbeats.items.BillsItem;
+import com.gymkhana.iitbeats.adapters.CategoryAdapter;
+import com.gymkhana.iitbeats.items.CategoryItem;
 import com.gymkhana.iitbeats.utils.Filenames;
 import com.gymkhana.iitbeats.utils.Functions;
 
 import java.util.List;
 
 @SuppressLint("NewApi")
-public class BillsFragment extends RefreshBasedFragment<BillsItem> {
+public class CategoryFragment extends RefreshBasedFragment<CategoryItem> {
 
-    BillsAdapter mAdapter;
+    CategoryAdapter mAdapter;
     String FILENAME = Filenames.getFilename(Filenames.BILLS);
 
     @Override
@@ -42,12 +42,12 @@ public class BillsFragment extends RefreshBasedFragment<BillsItem> {
 
     public void setupRecyclerView(View rootView) {
         initializeRecyclerView(rootView);
-        mAdapter = new BillsAdapter(mContext, this);
+        mAdapter = new CategoryAdapter(mContext, this);
         mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
-    public void updateList(List<BillsItem> list) {
+    public void updateList(List<CategoryItem> list) {
         if (list == null) {
             return;
         }

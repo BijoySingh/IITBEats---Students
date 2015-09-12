@@ -47,7 +47,7 @@ public class MenuFragment extends RefreshBasedFragment<MenuItem> {
     }
 
     @Override
-    public void rerenderList(List<MenuItem> list) {
+    public void updateList(List<MenuItem> list) {
         if (list == null) {
             return;
         }

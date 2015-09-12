@@ -1,6 +1,5 @@
 package com.gymkhana.iitbeats.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -19,13 +18,12 @@ import java.util.List;
 public abstract class RefreshBasedFragment<T> extends Fragment {
 
     Context mContext;
-    String mFilename;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView mRecyclerView;
     SwipeRefreshLayout mSwipeRefreshLayout;
     List<T> mValues = new ArrayList<>();
 
-    public void rerenderList(List<T> list) {
+    public void updateList(List<T> list) {
         return;
     }
 
@@ -64,8 +62,8 @@ public abstract class RefreshBasedFragment<T> extends Fragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        mContext = activity;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = context;
     }
 }

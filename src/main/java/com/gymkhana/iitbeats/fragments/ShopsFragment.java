@@ -47,7 +47,7 @@ public class ShopsFragment extends RefreshBasedFragment<ShopsItem> {
     }
 
     @Override
-    public void rerenderList(List<ShopsItem> list) {
+    public void updateList(List<ShopsItem> list) {
         if (list == null) {
             return;
         }
