@@ -66,7 +66,7 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
         displayFragment(DrawerItem.Tags.CATEGORIES);
     }
 
-    public void displayFragment(int id) {
+    public void displayFragment(Integer id) {
         Fragment fragment = null;
         Bundle bundle = new Bundle();
         mFragmentPosition = id;

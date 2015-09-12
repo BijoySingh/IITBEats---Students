@@ -14,6 +14,7 @@ import com.gymkhana.iitbeats.items.ApiItem;
 import com.gymkhana.iitbeats.items.MenuItem;
 import com.gymkhana.iitbeats.utils.DataType;
 import com.gymkhana.iitbeats.utils.Functions;
+import com.gymkhana.iitbeats.utils.SessionVariables;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class MenuFragment extends RefreshBasedFragment<MenuItem> {
         View rootView = inflater.inflate(R.layout.recycler_layout, container, false);
         setupRecyclerView(rootView);
 
-        mApiItem = ApiItem.getInstance(mContext, DataType.MENU, null);
+        mApiItem = ApiItem.getInstance(mContext, DataType.MENU, SessionVariables.mShopId);
         String cache = Functions.offlineDataReader(getActivity(), mApiItem.filename);
         ApiResponseUtility.parseResponse(cache, mApiItem, this);
         refreshList();
