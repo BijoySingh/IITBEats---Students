@@ -11,13 +11,18 @@ import com.gymkhana.iitbeats.items.OrdersItem;
 import com.gymkhana.iitbeats.items.ShopsItem;
 import com.gymkhana.iitbeats.utils.DataType;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.List;
 
 /**
  * Created by BijoySingh on 9/12/2015.
  */
-public class JsonParser {
-    public static final void parseResponse(String response, ApiItem item, RefreshBasedFragment fragment) {
+public class ApiResponseUtility {
+    public static final void parseResponse(String response,
+                                           ApiItem item,
+                                           RefreshBasedFragment fragment) {
         if (response == null || response.isEmpty())
             return;
 
@@ -34,23 +39,27 @@ public class JsonParser {
                 fragment.updateList(parseBillsItem(response));
             }
         } catch (Exception error) {
-            Log.e(JsonParser.class.getSimpleName(), "Parsing Error", error);
+            Log.e(ApiResponseUtility.class.getSimpleName(), "Parsing Error", error);
         }
     }
 
     public static final List<MenuItem> parseMenuItem(String response) throws Exception {
+        JSONArray data = new JSONObject(response).getJSONArray("results");
         return null;
     }
 
     public static final List<ShopsItem> parseShopsItem(String response) throws Exception {
+        JSONArray data = new JSONObject(response).getJSONArray("results");
         return null;
     }
 
     public static final List<OrdersItem> parseOrdersItem(String response) throws Exception {
+        JSONArray data = new JSONObject(response).getJSONArray("results");
         return null;
     }
 
     public static final List<BillsItem> parseBillsItem(String response) throws Exception {
+        JSONArray data = new JSONObject(response).getJSONArray("results");
         return null;
     }
 

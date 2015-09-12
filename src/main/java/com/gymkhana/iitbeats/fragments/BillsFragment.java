@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.adapters.BillsAdapter;
-import com.gymkhana.iitbeats.api.JsonParser;
+import com.gymkhana.iitbeats.api.ApiResponseUtility;
 import com.gymkhana.iitbeats.items.ApiItem;
 import com.gymkhana.iitbeats.items.BillsItem;
 import com.gymkhana.iitbeats.utils.DataType;
@@ -31,7 +31,7 @@ public class BillsFragment extends RefreshBasedFragment<BillsItem> {
 
         mApiItem = ApiItem.getInstance(mContext, DataType.BILLS, null);
         String cache = Functions.offlineDataReader(getActivity(), mApiItem.filename);
-        JsonParser.parseResponse(cache, mApiItem, this);
+        ApiResponseUtility.parseResponse(cache, mApiItem, this);
         refreshList();
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_bills));

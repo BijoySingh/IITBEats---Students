@@ -26,7 +26,7 @@ public class ApiUtility {
                         .Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        JsonParser.parseResponse(response, item, fragment);
+                        ApiResponseUtility.parseResponse(response, item, fragment);
                         if (item.filename != null) {
                             Functions.offlineDataWriter(item.context, item.filename,
                                     Functions.correctUTFEncoding(response));

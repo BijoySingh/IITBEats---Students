@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.adapters.OrdersAdapter;
-import com.gymkhana.iitbeats.api.JsonParser;
+import com.gymkhana.iitbeats.api.ApiResponseUtility;
 import com.gymkhana.iitbeats.items.ApiItem;
 import com.gymkhana.iitbeats.items.OrdersItem;
 import com.gymkhana.iitbeats.utils.DataType;
@@ -31,7 +31,7 @@ public class OrdersFragment extends RefreshBasedFragment<OrdersItem> {
 
         mApiItem = ApiItem.getInstance(mContext, DataType.ORDERS, null);
         String cache = Functions.offlineDataReader(getActivity(), mApiItem.filename);
-        JsonParser.parseResponse(cache, mApiItem, this);
+        ApiResponseUtility.parseResponse(cache, mApiItem, this);
         refreshList();
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_orders));
