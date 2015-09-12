@@ -32,6 +32,7 @@ public class MenuFragment extends RefreshBasedFragment<MenuItem> {
         mApiItem = ApiItem.getInstance(mContext, DataType.MENU, null);
         String cache = Functions.offlineDataReader(getActivity(), mApiItem.filename);
         JsonParser.parseResponse(cache, mApiItem, this);
+        refreshList();
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_menu));
         setupRecyclerView(rootView);

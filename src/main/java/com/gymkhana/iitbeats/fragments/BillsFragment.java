@@ -32,6 +32,7 @@ public class BillsFragment extends RefreshBasedFragment<BillsItem> {
         mApiItem = ApiItem.getInstance(mContext, DataType.BILLS, null);
         String cache = Functions.offlineDataReader(getActivity(), mApiItem.filename);
         JsonParser.parseResponse(cache, mApiItem, this);
+        refreshList();
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_bills));
         setupRecyclerView(rootView);

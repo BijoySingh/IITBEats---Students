@@ -32,6 +32,7 @@ public class ShopsFragment extends RefreshBasedFragment<ShopsItem> {
         mApiItem = ApiItem.getInstance(mContext, DataType.SHOPS, null);
         String cache = Functions.offlineDataReader(getActivity(), mApiItem.filename);
         JsonParser.parseResponse(cache, mApiItem, this);
+        refreshList();
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_shops));
         setupRecyclerView(rootView);

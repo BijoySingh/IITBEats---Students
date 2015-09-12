@@ -32,6 +32,7 @@ public class OrdersFragment extends RefreshBasedFragment<OrdersItem> {
         mApiItem = ApiItem.getInstance(mContext, DataType.ORDERS, null);
         String cache = Functions.offlineDataReader(getActivity(), mApiItem.filename);
         JsonParser.parseResponse(cache, mApiItem, this);
+        refreshList();
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_orders));
         setupRecyclerView(rootView);
