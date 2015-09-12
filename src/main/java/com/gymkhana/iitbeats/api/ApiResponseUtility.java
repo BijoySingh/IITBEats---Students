@@ -76,8 +76,8 @@ public class ApiResponseUtility {
         Set<Integer> categories = new HashSet<>();
         List<CategoryItem> list = new ArrayList<>();
         for (MenuItem menu_item : menu) {
-            if (!categories.contains(menu_item.category.id)) {
-                list.add(menu_item.category);
+            if (!categories.contains(menu_item.food_item.category.id)) {
+                list.add(menu_item.food_item.category);
             }
         }
         return list;

@@ -24,11 +24,11 @@ public class ServerUrls {
     }
 
     public static final String getMenu(Integer shop_id) {
-        return getUrl(Tags.MENU) + shop_id + DELIMITER;
+        return getUrl(Tags.MENU);// + shop_id + DELIMITER;
     }
 
     public static final class Tags {
-        public static final String MENU = "menu";
+        public static final String MENU = "menu.txt";
         public static final String SHOPS = "shops";
         public static final String ORDERS = "orders";
         public static final String BILLS = "bills";
