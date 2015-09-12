@@ -16,6 +16,11 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.gymkhana.iitbeats.R;
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -26,6 +31,8 @@ import java.io.FileOutputStream;
  * All the functions here are static functions and form the basis of the app
  */
 public class Functions {
+
+    private static ImageLoader mImageLoader;
 
     //It store the filedata into the file given by the filename
     public static void offlineDataWriter(Context context, String filename, String filedata) {
@@ -178,5 +185,29 @@ public class Functions {
 
         return error.getMessage();
     }
+
+    public static ImageLoader loadImageLoader(Context context) {
+        if (mImageLoader != null)
+            return mImageLoader;
+
+        DisplayImageOptions displayImageOptions = new DisplayImageOptions.Builder()
+                .cacheOnDisk(true)
+                .cacheInMemory(true)
+                .build();
+
+        ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(context);
+        config.threadPriority(Thread.NORM_PRIORITY - 2);
+        config.defaultDisplayImageOptions(displayImageOptions);
+        config.denyCacheImageMultipleSizesInMemory();
+        config.diskCacheFileNameGenerator(new Md5FileNameGenerator());
+        config.diskCacheSize(50 * 1024 * 1024); // 50 MiB
+        config.tasksProcessingOrder(QueueProcessingType.LIFO);
+        config.writeDebugLogs(); // Remove for release app
+        ImageLoader.getInstance().init(config.build());
+
+        mImageLoader = ImageLoader.getInstance();
+        return mImageLoader;
+    }
+
 
 }

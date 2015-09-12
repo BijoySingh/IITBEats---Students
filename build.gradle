@@ -27,4 +27,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.0.+'
     compile 'com.github.rey5137:material:1.1.1'
     compile 'com.mcxiaoke.volley:library:1.0.17'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
 }

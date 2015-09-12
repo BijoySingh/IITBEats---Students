@@ -9,13 +9,18 @@ import android.view.ViewGroup;
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.fragments.RefreshBasedFragment;
 import com.gymkhana.iitbeats.items.CategoryItem;
+import com.gymkhana.iitbeats.utils.Functions;
 import com.gymkhana.iitbeats.viewholder.CategoryViewHolder;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 
 /**
  * Created by BijoySingh on 9/12/2015.
  */
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
 
+    private final ImageLoader mImageLoader;
     private Context mContext;
     private RefreshBasedFragment<CategoryItem> mFragment;
 
@@ -23,6 +28,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
                            RefreshBasedFragment<CategoryItem> fragment) {
         mContext = context;
         mFragment = fragment;
+        mImageLoader = Functions.loadImageLoader(context);
     }
 
     @Override
@@ -37,7 +43,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
     public void onBindViewHolder(CategoryViewHolder holder, final int position) {
 
         final CategoryItem data = mFragment.getValues().get(position);
-
+        holder.title.setText(data.name);
+        ImageAware imageAware = new ImageViewAware(holder.thumbnail, false);
+        mImageLoader.displayImage(data.image, imageAware);
+        
     }
 
     @Override
