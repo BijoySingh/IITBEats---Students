@@ -12,11 +12,14 @@ import com.gymkhana.iitbeats.R;
  */
 public class MenuViewHolder extends RecyclerView.ViewHolder {
 
+    public View root;
     public ImageView thumbnail, vegetarian, add_to_cart;
     public TextView name, price, categories;
 
     public MenuViewHolder(View view) {
         super(view);
+        root = view;
+
         thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
         vegetarian = (ImageView) view.findViewById(R.id.vegetarian);
         add_to_cart = (ImageView) view.findViewById(R.id.add_to_cart);

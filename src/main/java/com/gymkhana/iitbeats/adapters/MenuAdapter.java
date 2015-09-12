@@ -1,5 +1,6 @@
 package com.gymkhana.iitbeats.adapters;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -53,6 +54,14 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
             ImageAware imageAware = new ImageViewAware(holder.thumbnail, false);
             mImageLoader.displayImage(data.food_item.image, imageAware);
         }
+
+        holder.root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = Functions.createOrderDialog(mContext, data);
+                dialog.show();
+            }
+        });
     }
 
     @Override
