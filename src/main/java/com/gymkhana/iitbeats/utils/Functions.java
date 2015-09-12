@@ -195,7 +195,11 @@ public class Functions {
             return new String(error.networkResponse.data);
         }
 
-        return error.getMessage();
+        String error_message = error.getMessage();
+        if (error_message == null)
+            return "ERROR";
+
+        return error_message;
     }
 
     public static ImageLoader loadImageLoader(Context context) {

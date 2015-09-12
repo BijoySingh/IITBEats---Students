@@ -100,7 +100,11 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (mFragmentPosition == DrawerItem.Tags.CATEGORIES) {
+            finish();
+        } else {
+            displayFragment(DrawerItem.Tags.CATEGORIES);
+        }
     }
 
     public void startupFunctions() {

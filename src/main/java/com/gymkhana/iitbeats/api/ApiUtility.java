@@ -2,6 +2,7 @@ package com.gymkhana.iitbeats.api;
 
 import android.util.Log;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -17,6 +18,7 @@ import com.gymkhana.iitbeats.utils.Functions;
 public class ApiUtility {
 
     public static final String LOG_KEY = ApiUtility.class.getSimpleName();
+    public static final Integer TIMEOUT = 5000;
 
     public static void call(final ApiItem item, final RefreshBasedFragment fragment) {
         Log.d(LOG_KEY, item.filename + " => " + item.url);
@@ -42,6 +44,12 @@ public class ApiUtility {
                     }
                 });
 
+
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                ApiUtility.TIMEOUT,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        
         Volley.newRequestQueue(item.context).add(request);
     }
 
