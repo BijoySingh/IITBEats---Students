@@ -29,7 +29,7 @@ public class ServerUrls {
 
     public static final class Tags {
         public static final String MENU = "menu.txt";
-        public static final String SHOPS = "shops";
+        public static final String SHOPS = "shops.txt";
         public static final String ORDERS = "orders";
         public static final String BILLS = "bills";
     }
