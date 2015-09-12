@@ -237,6 +237,7 @@ public class Functions {
         holder.categories.setText(item.food_item.getCategories());
         holder.quantity.setText("1");
         holder.price.setText(item.getPrice());
+        holder.setQuantityListeners();
         return dialog;
     }
 
