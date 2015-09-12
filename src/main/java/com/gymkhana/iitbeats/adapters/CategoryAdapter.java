@@ -7,10 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.URLUtil;
 
+import com.gymkhana.iitbeats.MainActivity;
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.fragments.RefreshBasedFragment;
 import com.gymkhana.iitbeats.items.CategoryItem;
+import com.gymkhana.iitbeats.items.DrawerItem;
 import com.gymkhana.iitbeats.utils.Functions;
+import com.gymkhana.iitbeats.utils.SessionVariables;
 import com.gymkhana.iitbeats.viewholder.CategoryViewHolder;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.imageaware.ImageAware;
@@ -51,6 +54,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
             mImageLoader.displayImage(data.image, imageAware);
         }
 
+        holder.root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SessionVariables.mCategoryId = data.id;
+                ((MainActivity) mContext).displayFragment(DrawerItem.Tags.MENU);
+            }
+        });
     }
 
     @Override

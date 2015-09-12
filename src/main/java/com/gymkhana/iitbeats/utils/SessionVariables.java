@@ -21,5 +21,4 @@ public class SessionVariables {
     public static List<OrdersItem> mOrderItems;
     public static List<BillsItem> mBillsItems;
 
-    public static List<MenuItem> mActiveMenuItems;
 }

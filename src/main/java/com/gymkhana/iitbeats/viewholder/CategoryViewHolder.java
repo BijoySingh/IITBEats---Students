@@ -12,11 +12,13 @@ import com.gymkhana.iitbeats.R;
  */
 public class CategoryViewHolder extends RecyclerView.ViewHolder {
 
+    public View root;
     public ImageView thumbnail;
     public TextView title;
 
     public CategoryViewHolder(View view) {
         super(view);
+        root = view;
         thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
         title = (TextView) view.findViewById(R.id.title);
     }
