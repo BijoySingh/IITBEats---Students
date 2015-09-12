@@ -14,6 +14,7 @@ import com.gymkhana.iitbeats.utils.DataType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,8 +45,14 @@ public class ApiResponseUtility {
     }
 
     public static final List<MenuItem> parseMenuItem(String response) throws Exception {
+        List<MenuItem> list = new ArrayList<>();
         JSONArray data = new JSONObject(response).getJSONArray("results");
-        return null;
+        for (int index = 0; index < data.length(); index++) {
+            JSONObject json = data.getJSONObject(index);
+            MenuItem item = new MenuItem(json);
+            list.add(item);
+        }
+        return list;
     }
 
     public static final List<ShopsItem> parseShopsItem(String response) throws Exception {
