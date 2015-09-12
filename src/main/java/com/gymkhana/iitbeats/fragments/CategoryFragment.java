@@ -35,7 +35,6 @@ public class CategoryFragment extends RefreshBasedFragment<CategoryItem> {
         refreshList();
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_bills));
-        setupRecyclerView(rootView);
 
         return rootView;
     }

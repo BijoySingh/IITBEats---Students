@@ -35,7 +35,6 @@ public class OrdersFragment extends RefreshBasedFragment<OrdersItem> {
         refreshList();
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_orders));
-        setupRecyclerView(rootView);
 
         return rootView;
     }

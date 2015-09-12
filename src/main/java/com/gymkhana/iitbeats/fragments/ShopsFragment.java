@@ -35,8 +35,7 @@ public class ShopsFragment extends RefreshBasedFragment<ShopsItem> {
         refreshList();
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_shops));
-        setupRecyclerView(rootView);
-
+   
         return rootView;
     }
 

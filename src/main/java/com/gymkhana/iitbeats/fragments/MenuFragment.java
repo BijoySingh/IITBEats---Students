@@ -35,8 +35,6 @@ public class MenuFragment extends RefreshBasedFragment<MenuItem> {
         refreshList();
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_menu));
-        setupRecyclerView(rootView);
-
         return rootView;
     }
 

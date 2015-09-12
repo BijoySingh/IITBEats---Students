@@ -35,7 +35,6 @@ public class BillsFragment extends RefreshBasedFragment<BillsItem> {
         refreshList();
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_bills));
-        setupRecyclerView(rootView);
 
         return rootView;
     }
