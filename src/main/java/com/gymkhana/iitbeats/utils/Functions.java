@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.gymkhana.iitbeats.R;
+import com.gymkhana.iitbeats.items.MenuItem;
+import com.gymkhana.iitbeats.viewholder.DialogViewHolder;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -225,5 +228,16 @@ public class Functions {
         return mImageLoader;
     }
 
+
+    public static Dialog createOrderDialog(Context context, MenuItem item) {
+        final Dialog dialog = getTransparentDialog(context, R.layout.order_dialog,
+                Color.TRANSPARENT);
+        DialogViewHolder holder = new DialogViewHolder(dialog);
+        holder.name.setText(item.food_item.name);
+        holder.vegetarian.setImageResource(item.food_item.getVegetarianResource());
+        holder.categories.setText(item.food_item.getCategories());
+        holder.price.setText(item.getPrice());
+        return dialog;
+    }
 
 }

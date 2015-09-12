@@ -36,6 +36,10 @@ public class MenuItem implements Serializable {
         return list;
     }
 
+    public String getPrice() {
+        return "\u20B9 " + price.toString();
+    }
+
     public static final class JsonKeys {
         public static final String ID = "id";
         public static final String FOOD = "food";

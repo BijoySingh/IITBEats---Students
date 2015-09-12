@@ -46,7 +46,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
         final MenuItem data = mFragment.getValues().get(position);
         holder.name.setText(data.food_item.name);
         holder.categories.setText(data.food_item.getCategories());
-        holder.price.setText("\u20B9 " + data.price.toString());
+        holder.price.setText(data.getPrice());
         holder.vegetarian.setImageResource(data.food_item.getVegetarianResource());
 
         if (URLUtil.isValidUrl(data.food_item.image)) {
