@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.URLUtil;
 
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.fragments.RefreshBasedFragment;
@@ -44,8 +45,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
 
         final CategoryItem data = mFragment.getValues().get(position);
         holder.title.setText(data.name);
-        ImageAware imageAware = new ImageViewAware(holder.thumbnail, false);
-        mImageLoader.displayImage(data.image, imageAware);
+
+        if (URLUtil.isValidUrl(data.image)) {
+            ImageAware imageAware = new ImageViewAware(holder.thumbnail, false);
+            mImageLoader.displayImage(data.image, imageAware);
+        }
 
     }
 
