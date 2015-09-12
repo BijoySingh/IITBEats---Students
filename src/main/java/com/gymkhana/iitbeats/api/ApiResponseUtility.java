@@ -31,7 +31,9 @@ public class ApiResponseUtility {
         try {
             if (item.data_type == DataType.MENU) {
                 getShopMenu(response);
-                fragment.updateList(SessionVariables.mMenuItems);
+                fragment.updateList(MenuItem.filterMenu(
+                        SessionVariables.mMenuItems,
+                        SessionVariables.mCategoryId));
             } else if (item.data_type == DataType.CATEGORY) {
                 getShopMenu(response);
                 fragment.updateList(SessionVariables.mCategoryItems);
