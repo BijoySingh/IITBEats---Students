@@ -133,7 +133,6 @@ public class Functions {
     //Gets a dialog which is transparent
     public static Dialog getTransparentDialog(Context context, Integer layout, Integer color) {
         Dialog dialog = new Dialog(context);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(layout);
 
         final Window d_window = dialog.getWindow();
@@ -236,6 +235,7 @@ public class Functions {
         holder.name.setText(item.food_item.name);
         holder.vegetarian.setImageResource(item.food_item.getVegetarianResource());
         holder.categories.setText(item.food_item.getCategories());
+        holder.quantity.setText("1");
         holder.price.setText(item.getPrice());
         return dialog;
     }

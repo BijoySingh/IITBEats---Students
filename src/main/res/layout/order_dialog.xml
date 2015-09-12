@@ -30,7 +30,6 @@
                     android:gravity="center_vertical"
                     android:padding="16dp"
                     android:text="@string/add_to_cart"
-                    android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
 
@@ -45,17 +44,17 @@
                 android:layout_marginTop="32sp"
                 app:fab_backgroundColor="@color/accent_color"
                 app:fab_elevation="1sp"
-                app:fab_iconSrc="@drawable/ic_shopping_cart_white_24dp"
+                app:fab_iconSrc="@drawable/ic_local_dining_white_48dp"
                 app:fab_radius="@dimen/fab_radius" />
 
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="0sp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:padding="8sp">
+            android:padding="16sp">
 
             <TextView
                 android:id="@+id/name"
@@ -96,6 +95,47 @@
                     android:src="@drawable/vegetarian" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="4sp">
+
+                <TextView
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/quantity"
+                    android:textColor="@color/hint_text"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/minus"
+                    android:layout_width="28sp"
+                    android:layout_height="28sp"
+                    android:alpha="0.5"
+                    android:padding="4sp"
+                    android:src="@drawable/ic_remove_circle_outline_black_48dp" />
+
+                <TextView
+                    android:id="@+id/quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/plus"
+                    android:layout_width="28sp"
+                    android:layout_height="28sp"
+                    android:alpha="0.5"
+                    android:padding="4sp"
+                    android:src="@drawable/ic_add_circle_outline_black_48dp" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -111,7 +151,6 @@
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="@string/cancel"
-                android:textAllCaps="true"
                 android:textColor="@color/hint_text"
                 android:textSize="21sp" />
 
@@ -130,7 +169,6 @@
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="@string/add"
-                android:textAllCaps="true"
                 android:textColor="@color/accent_color"
                 android:textSize="21sp" />
 
