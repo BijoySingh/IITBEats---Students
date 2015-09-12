@@ -125,8 +125,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4sp"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="16sp" />
+                    android:textColor="@color/hint_text"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/plus"
