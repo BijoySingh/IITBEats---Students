@@ -40,8 +40,7 @@ public class ShopsAdapter extends RecyclerView.Adapter<ShopsViewHolder> {
         holder.title.setText(data.name);
         holder.address.setText(data.address);
         holder.owner.setText(data.shop_owner.getName());
-        holder.phone.setText(data.phone);
-        holder.status.setColorFilter(data.getStatusColor());
+        holder.call.setColorFilter(data.getStatusColor());
         holder.setCallListener(mContext, data.phone);
     }
 

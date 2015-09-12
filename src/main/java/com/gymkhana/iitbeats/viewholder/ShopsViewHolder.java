@@ -13,16 +13,14 @@ import com.gymkhana.iitbeats.utils.Functions;
  * Created by BijoySingh on 9/12/2015.
  */
 public class ShopsViewHolder extends RecyclerView.ViewHolder {
-    public TextView title, address, owner, phone;
-    public ImageView status, call;
+    public TextView title, address, owner;
+    public ImageView call;
 
     public ShopsViewHolder(View view) {
         super(view);
         title = (TextView) view.findViewById(R.id.title);
         address = (TextView) view.findViewById(R.id.address);
         owner = (TextView) view.findViewById(R.id.owner);
-        phone = (TextView) view.findViewById(R.id.phone);
-        status = (ImageView) view.findViewById(R.id.call);
         call = (ImageView) view.findViewById(R.id.call);
     }
 
