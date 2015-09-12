@@ -5,10 +5,12 @@ import com.gymkhana.iitbeats.utils.Colors;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by BijoySingh on 9/12/2015.
  */
-public class ShopsItem {
+public class ShopsItem implements Serializable {
     public String name, address, phone;
     public Integer id;
     public Boolean status;

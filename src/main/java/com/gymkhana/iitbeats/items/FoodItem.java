@@ -3,13 +3,14 @@ package com.gymkhana.iitbeats.items;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by BijoySingh on 9/12/2015.
  */
-public class FoodItem {
+public class FoodItem implements Serializable {
     public Integer id;
     public String name, image;
     public Boolean is_vegetarian;

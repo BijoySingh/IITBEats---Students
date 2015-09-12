@@ -6,10 +6,12 @@ import com.gymkhana.iitbeats.api.ServerUrls;
 import com.gymkhana.iitbeats.utils.DataType;
 import com.gymkhana.iitbeats.utils.Filenames;
 
+import java.io.Serializable;
+
 /**
  * Created by BijoySingh on 9/12/2015.
  */
-public class ApiItem {
+public class ApiItem implements Serializable {
     public String url, filename;
     public Context context;
     public Integer data_type;

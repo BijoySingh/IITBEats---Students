@@ -2,10 +2,12 @@ package com.gymkhana.iitbeats.items;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by BijoySingh on 9/12/2015.
  */
-public class CategoryItem {
+public class CategoryItem implements Serializable {
     public Integer id;
     public String name, image;
 

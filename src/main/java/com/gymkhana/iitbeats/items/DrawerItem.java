@@ -1,10 +1,11 @@
 package com.gymkhana.iitbeats.items;
 
+import java.io.Serializable;
+
 /**
  * Created by BijoySingh on 9/11/2015.
  */
-public class DrawerItem {
-
+public class DrawerItem implements Serializable {
     public Integer tag, logo;
     public String title;
     public DrawerItem(Integer tag, String title, Integer logo) {
