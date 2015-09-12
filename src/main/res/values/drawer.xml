@@ -2,6 +2,7 @@
 <resources>
     <string name="drawer_menu">Menu</string>
     <string name="drawer_shops">Shops</string>
+    <string name="drawer_categories">Categories</string>
     <string name="drawer_orders">Orders</string>
     <string name="drawer_bills">Bills</string>
     <string name="drawer_login">Login</string>

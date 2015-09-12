@@ -90,7 +90,7 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
-                    .add(R.id.page_fragment, fragment)
+                    .replace(R.id.page_fragment, fragment)
                     .commit();
             mDrawerFragment.mDrawerLayout.closeDrawers();
         } else {

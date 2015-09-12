@@ -34,7 +34,7 @@ public class CategoryFragment extends RefreshBasedFragment<CategoryItem> {
         ApiResponseUtility.parseResponse(cache, mApiItem, this);
         refreshList();
 
-        Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_bills));
+        Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_categories));
 
         return rootView;
     }
