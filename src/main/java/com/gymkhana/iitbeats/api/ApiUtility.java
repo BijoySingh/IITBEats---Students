@@ -18,7 +18,7 @@ public class ApiUtility {
 
     public static final String LOG_KEY = ApiUtility.class.getSimpleName();
 
-    public static void call(final ApiItem item, RefreshBasedFragment fragment) {
+    public static void call(final ApiItem item, final RefreshBasedFragment fragment) {
         Log.d(LOG_KEY, item.filename + " => " + item.url);
 
         StringRequest request = new StringRequest
@@ -26,6 +26,7 @@ public class ApiUtility {
                         .Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        JsonParser.parseResponse(response, item, fragment);
                         if (item.filename != null) {
                             Functions.offlineDataWriter(item.context, item.filename,
                                     Functions.correctUTFEncoding(response));
@@ -41,5 +42,5 @@ public class ApiUtility {
 
         Volley.newRequestQueue(item.context).add(request);
     }
-    
+
 }
