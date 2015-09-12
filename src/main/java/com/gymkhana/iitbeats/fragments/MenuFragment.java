@@ -3,7 +3,6 @@ package com.gymkhana.iitbeats.fragments;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,6 @@ import java.util.List;
 public class MenuFragment extends RefreshBasedFragment<MenuItem> {
 
     MenuAdapter mAdapter;
-    ApiItem mApiItem;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,9 +59,5 @@ public class MenuFragment extends RefreshBasedFragment<MenuItem> {
         }
     }
 
-    @Override
-    public void refreshList() {
-        Log.d("MENU LIST FRAGMENT", "Downloader Called");
-    }
 }
 

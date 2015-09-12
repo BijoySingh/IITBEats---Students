@@ -5,9 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.gymkhana.iitbeats.R;
+import com.gymkhana.iitbeats.api.ApiUtility;
+import com.gymkhana.iitbeats.items.ApiItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +20,7 @@ import java.util.List;
  */
 public abstract class RefreshBasedFragment<T> extends Fragment {
 
+    ApiItem mApiItem;
     Context mContext;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView mRecyclerView;
@@ -50,7 +54,8 @@ public abstract class RefreshBasedFragment<T> extends Fragment {
     }
 
     public void refreshList() {
-        return;
+        Log.d(RefreshBasedFragment.class.getSimpleName(), "API CALL");
+        ApiUtility.call(mApiItem, this);
     }
 
     public boolean renderOfflineList() {
