@@ -31,7 +31,7 @@ public class ApiItem {
                     ServerUrls.getMenu(extra),
                     Filenames.getFilename(Filenames.MENU, extra),
                     data_type);
-        } else if (data_type == DataType.BILLINGS) {
+        } else if (data_type == DataType.BILLS) {
             return new ApiItem(context,
                     ServerUrls.getBillings(),
                     Filenames.getFilename(Filenames.BILLS),

@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.adapters.CategoryAdapter;
+import com.gymkhana.iitbeats.api.JsonParser;
+import com.gymkhana.iitbeats.items.ApiItem;
 import com.gymkhana.iitbeats.items.CategoryItem;
-import com.gymkhana.iitbeats.utils.Filenames;
+import com.gymkhana.iitbeats.utils.DataType;
 import com.gymkhana.iitbeats.utils.Functions;
 
 import java.util.List;
@@ -20,7 +22,7 @@ import java.util.List;
 public class CategoryFragment extends RefreshBasedFragment<CategoryItem> {
 
     CategoryAdapter mAdapter;
-    String FILENAME = Filenames.getFilename(Filenames.MENU);
+    ApiItem mApiItem;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,10 +31,9 @@ public class CategoryFragment extends RefreshBasedFragment<CategoryItem> {
         View rootView = inflater.inflate(R.layout.recycler_layout, container, false);
         setupRecyclerView(rootView);
 
-        String filetext = Functions.offlineDataReader(getActivity(), FILENAME);
-        if (!filetext.contentEquals("")) {
-
-        }
+        mApiItem = ApiItem.getInstance(mContext, DataType.MENU, null);
+        String cache = Functions.offlineDataReader(getActivity(), mApiItem.filename);
+        JsonParser.parseResponse(cache, mApiItem, this);
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_bills));
         setupRecyclerView(rootView);

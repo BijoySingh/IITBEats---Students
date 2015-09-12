@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.adapters.OrdersAdapter;
+import com.gymkhana.iitbeats.api.JsonParser;
+import com.gymkhana.iitbeats.items.ApiItem;
 import com.gymkhana.iitbeats.items.OrdersItem;
-import com.gymkhana.iitbeats.utils.Filenames;
+import com.gymkhana.iitbeats.utils.DataType;
 import com.gymkhana.iitbeats.utils.Functions;
 
 import java.util.List;
@@ -20,7 +22,7 @@ import java.util.List;
 public class OrdersFragment extends RefreshBasedFragment<OrdersItem> {
 
     OrdersAdapter mAdapter;
-    String FILENAME = Filenames.getFilename(Filenames.ORDERS);
+    ApiItem mApiItem;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,10 +31,9 @@ public class OrdersFragment extends RefreshBasedFragment<OrdersItem> {
         View rootView = inflater.inflate(R.layout.recycler_layout, container, false);
         setupRecyclerView(rootView);
 
-        String filetext = Functions.offlineDataReader(getActivity(), FILENAME);
-        if (!filetext.contentEquals("")) {
-
-        }
+        mApiItem = ApiItem.getInstance(mContext, DataType.ORDERS, null);
+        String cache = Functions.offlineDataReader(getActivity(), mApiItem.filename);
+        JsonParser.parseResponse(cache, mApiItem, this);
 
         Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_orders));
         setupRecyclerView(rootView);

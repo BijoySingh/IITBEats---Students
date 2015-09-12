@@ -20,7 +20,7 @@ public class ServerUrls {
     }
 
     public static final String getBillings() {
-        return getUrl(Tags.BILLINGS);
+        return getUrl(Tags.BILLS);
     }
 
     public static final String getMenu(Integer shop_id) {
@@ -31,7 +31,7 @@ public class ServerUrls {
         public static final String MENU = "menu";
         public static final String SHOPS = "shops";
         public static final String ORDERS = "orders";
-        public static final String BILLINGS = "billings";
+        public static final String BILLS = "bills";
     }
 
 }
