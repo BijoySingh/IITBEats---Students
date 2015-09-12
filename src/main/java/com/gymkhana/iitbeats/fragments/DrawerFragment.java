@@ -101,7 +101,7 @@ public class DrawerFragment extends Fragment {
     }
 
     public ListView setupList() {
-        mDrawerListView.add(new DrawerItem(DrawerItem.Tags.MENU, getString(R.string.drawer_menu), R.drawable.ic_chrome_reader_mode_black_36dp));
+        mDrawerListView.add(new DrawerItem(DrawerItem.Tags.CATEGORIES, getString(R.string.drawer_menu), R.drawable.ic_chrome_reader_mode_black_36dp));
         mDrawerListView.add(new DrawerItem(DrawerItem.Tags.SHOPS, getString(R.string.drawer_shops), R.drawable.ic_dashboard_black_36dp));
         mDrawerListView.add(new DrawerItem(DrawerItem.Tags.ORDERS, getString(R.string.drawer_orders), R.drawable.ic_store_black_36dp));
         mDrawerListView.add(new DrawerItem(DrawerItem.Tags.BILLS, getString(R.string.drawer_bills), R.drawable.ic_payment_black_36dp));

@@ -14,8 +14,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.gymkhana.iitbeats.fragments.BillsFragment;
 import com.gymkhana.iitbeats.fragments.BlankFragment;
+import com.gymkhana.iitbeats.fragments.CategoryFragment;
 import com.gymkhana.iitbeats.fragments.DrawerFragment;
+import com.gymkhana.iitbeats.fragments.MenuFragment;
+import com.gymkhana.iitbeats.fragments.OrdersFragment;
+import com.gymkhana.iitbeats.fragments.ShopsFragment;
 import com.gymkhana.iitbeats.items.DrawerItem;
 import com.gymkhana.iitbeats.utils.Functions;
 
@@ -49,24 +54,45 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mDrawerFragment.mDrawerLayout.closeDrawers();
                 DrawerItem item = (DrawerItem) parent.getItemAtPosition(position);
+
+                if (id == DrawerItem.Tags.LOGOUT) {
+
+                } else if (id == DrawerItem.Tags.LOGIN) {
+
+                }
+
+                displayFragment(item.tag);
             }
         });
 
         displayFragment(START_STATE);
     }
 
-    public void displayFragment(int position) {
+    public void displayFragment(int id) {
         Fragment fragment = null;
         Bundle bundle = new Bundle();
-        mFragmentPosition = position;
+        mFragmentPosition = id;
 
-        fragment = new BlankFragment();
+        if (id == DrawerItem.Tags.MENU) {
+            fragment = new MenuFragment();
+        } else if (id == DrawerItem.Tags.SHOPS) {
+            fragment = new ShopsFragment();
+        } else if (id == DrawerItem.Tags.ORDERS) {
+            fragment = new OrdersFragment();
+        } else if (id == DrawerItem.Tags.BILLS) {
+            fragment = new BillsFragment();
+        } else if (id == DrawerItem.Tags.CATEGORIES) {
+            fragment = new CategoryFragment();
+        } else {
+            fragment = new BlankFragment();
+        }
+
         fragment.setArguments(bundle);
 
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(R.id.page_fragment, fragment)
+                    .add(R.id.page_fragment, fragment)
                     .commit();
             mDrawerFragment.mDrawerLayout.closeDrawers();
         } else {

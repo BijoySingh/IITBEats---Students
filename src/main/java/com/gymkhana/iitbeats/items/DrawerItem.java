@@ -20,5 +20,6 @@ public class DrawerItem {
         public static final Integer BILLS = 3;
         public static final Integer LOGOUT = 4;
         public static final Integer LOGIN = 5;
+        public static final Integer CATEGORIES = 6;
     }
 }
