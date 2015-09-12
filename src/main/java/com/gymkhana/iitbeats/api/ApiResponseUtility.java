@@ -58,18 +58,36 @@ public class ApiResponseUtility {
     }
 
     public static final List<ShopsItem> parseShopsItem(String response) throws Exception {
+        List<ShopsItem> list = new ArrayList<>();
         JSONArray data = new JSONObject(response).getJSONArray("results");
-        return null;
+        for (int index = 0; index < data.length(); index++) {
+            JSONObject json = data.getJSONObject(index);
+            ShopsItem item = new ShopsItem(json);
+            list.add(item);
+        }
+        return list;
     }
 
     public static final List<OrdersItem> parseOrdersItem(String response) throws Exception {
+        List<OrdersItem> list = new ArrayList<>();
         JSONArray data = new JSONObject(response).getJSONArray("results");
-        return null;
+        for (int index = 0; index < data.length(); index++) {
+            JSONObject json = data.getJSONObject(index);
+            OrdersItem item = new OrdersItem(json);
+            list.add(item);
+        }
+        return list;
     }
 
     public static final List<BillsItem> parseBillsItem(String response) throws Exception {
+        List<BillsItem> list = new ArrayList<>();
         JSONArray data = new JSONObject(response).getJSONArray("results");
-        return null;
+        for (int index = 0; index < data.length(); index++) {
+            JSONObject json = data.getJSONObject(index);
+            BillsItem item = new BillsItem(json);
+            list.add(item);
+        }
+        return list;
     }
 
     public static final List<CategoryItem> filterCategories(List<MenuItem> menu) {
