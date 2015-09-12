@@ -3,6 +3,7 @@ package com.gymkhana.iitbeats.utils;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -175,6 +176,17 @@ public class Functions {
             return intent;
         } else {
             return openAppStore(packageName);
+        }
+    }
+
+    public static void callPhone(Context context, String phone) {
+        PackageManager pm = context.getPackageManager();
+
+        if (pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
+            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
+            context.startActivity(intent);
+        } else {
+            Functions.makeToast(context, "It seems your device doesn't support calling!");
         }
     }
 

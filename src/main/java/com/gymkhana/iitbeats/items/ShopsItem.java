@@ -8,6 +8,7 @@ import org.json.JSONObject;
 public class ShopsItem {
     public String title, address, phone, owner;
     public Integer id;
+    public Boolean open;
 
     public ShopsItem(JSONObject json) throws Exception {
         id = json.getInt(JsonKeys.ID);
@@ -16,6 +17,8 @@ public class ShopsItem {
         address = json.getString(JsonKeys.ADDRESS);
         phone = json.getString(JsonKeys.PHONE);
         owner = json.getString(JsonKeys.OWNER);
+
+        open = json.getBoolean(JsonKeys.OPEN);
     }
 
     public static final class JsonKeys {
@@ -24,5 +27,6 @@ public class ShopsItem {
         public static final String ADDRESS = "address";
         public static final String PHONE = "phone";
         public static final String OWNER = "owner";
+        public static final String OPEN = "open";
     }
 }

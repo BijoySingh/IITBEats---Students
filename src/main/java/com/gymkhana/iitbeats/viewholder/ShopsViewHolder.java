@@ -11,8 +11,8 @@ import com.gymkhana.iitbeats.R;
  * Created by BijoySingh on 9/12/2015.
  */
 public class ShopsViewHolder extends RecyclerView.ViewHolder {
-    TextView title, address, owner, phone;
-    ImageView status, call;
+    public TextView title, address, owner, phone;
+    public ImageView status, call;
 
     public ShopsViewHolder(View view) {
         super(view);
