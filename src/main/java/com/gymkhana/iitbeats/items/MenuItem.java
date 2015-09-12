@@ -27,7 +27,7 @@ public class MenuItem {
         is_vegetarian = json.getBoolean(JsonKeys.VEGETARIAN);
         is_available = json.getBoolean(JsonKeys.AVAILABLE);
 
-//        category = new CategoryItem(json.getJSONObject(JsonKeys.CATEGORY));
+        category = new CategoryItem(json.getJSONObject(JsonKeys.CATEGORY));
     }
 
     public static final class JsonKeys {

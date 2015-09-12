@@ -15,7 +15,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by BijoySingh on 9/12/2015.
@@ -70,7 +72,14 @@ public class ApiResponseUtility {
         return null;
     }
 
-    public static final List<CategoryItem> filterCategories(List<MenuItem> list) {
-        return null;
+    public static final List<CategoryItem> filterCategories(List<MenuItem> menu) {
+        Set<Integer> categories = new HashSet<>();
+        List<CategoryItem> list = new ArrayList<>();
+        for (MenuItem menu_item : menu) {
+            if (!categories.contains(menu_item.category.id)) {
+                list.add(menu_item.category);
+            }
+        }
+        return list;
     }
 }
