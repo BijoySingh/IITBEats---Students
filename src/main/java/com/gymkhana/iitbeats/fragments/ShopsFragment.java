@@ -20,7 +20,7 @@ import java.util.List;
 public class ShopsFragment extends RefreshBasedFragment<ShopsItem> {
 
     ShopsAdapter mAdapter;
-    String FILENAME = Filenames.getFilename(Filenames.SHOP);
+    String FILENAME = Filenames.getFilename(Filenames.SHOPS);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

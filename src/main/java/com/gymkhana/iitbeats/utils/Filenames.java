@@ -4,7 +4,7 @@ package com.gymkhana.iitbeats.utils;
  * Created by BijoySingh on 9/12/2015.
  */
 public class Filenames {
-    public static final String SHOP = "shops";
+    public static final String SHOPS = "shops";
     public static final String MENU = "menu";
     public static final String ORDERS = "orders";
     public static final String BILLS = "bills";
