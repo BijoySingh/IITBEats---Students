@@ -5,7 +5,9 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by BijoySingh on 9/12/2015.
@@ -41,6 +43,14 @@ public class MenuItem implements Serializable {
             }
         }
         return list;
+    }
+
+    public static Map<Integer, MenuItem> getMapping(List<MenuItem> source) {
+        Map<Integer, MenuItem> mapping = new HashMap<>();
+        for (MenuItem item : source) {
+            mapping.put(item.id, item);
+        }
+        return mapping;
     }
 
     public String getPrice() {

@@ -62,6 +62,8 @@ public class ApiResponseUtility {
         for (CategoryItem item : SessionVariables.mCategoryItems) {
             SessionVariables.mCategoryMapping.put(item.id, item);
         }
+
+        SessionVariables.mToppingMapping = MenuItem.getMapping(SessionVariables.mMenuItems);
     }
 
     public static final List<MenuItem> parseMenuItem(String response, String key) throws Exception {

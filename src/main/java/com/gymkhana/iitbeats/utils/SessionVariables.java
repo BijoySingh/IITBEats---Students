@@ -24,4 +24,5 @@ public class SessionVariables {
     public static List<BillsItem> mBillsItems;
 
     public static Map<Integer, CategoryItem> mCategoryMapping;
+    public static Map<Integer, MenuItem> mToppingMapping;
 }
