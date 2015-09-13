@@ -6,14 +6,15 @@
 
     <TextView
         android:id="@+id/badge"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
         android:layout_gravity="center_vertical"
-        android:layout_margin="4sp"
         android:background="@drawable/circular_background"
         android:gravity="center_vertical|center_horizontal"
+        android:minWidth="21sp"
         android:text="0"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="14sp" />
 
     <ImageView
         android:layout_width="48dp"
