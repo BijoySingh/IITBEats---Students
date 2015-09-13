@@ -4,6 +4,7 @@ import com.gymkhana.iitbeats.items.BillsItem;
 import com.gymkhana.iitbeats.items.CategoryItem;
 import com.gymkhana.iitbeats.items.MenuItem;
 import com.gymkhana.iitbeats.items.OrdersItem;
+import com.gymkhana.iitbeats.items.SendOrderItem;
 import com.gymkhana.iitbeats.items.ShopsItem;
 
 import java.util.List;
@@ -25,4 +26,6 @@ public class SessionVariables {
 
     public static Map<Integer, CategoryItem> mCategoryMapping;
     public static Map<Integer, MenuItem> mToppingMapping;
+
+    public static SendOrderItem mSendOrder;
 }

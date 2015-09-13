@@ -7,7 +7,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.gymkhana.iitbeats.MainActivity;
 import com.gymkhana.iitbeats.R;
+import com.gymkhana.iitbeats.items.DrawerItem;
 import com.gymkhana.iitbeats.items.MenuItem;
 import com.gymkhana.iitbeats.items.SendOrderSubItem;
 import com.gymkhana.iitbeats.utils.SessionVariables;
@@ -18,6 +20,7 @@ import com.gymkhana.iitbeats.utils.SessionVariables;
 public class OrderItemViewHolder {
 
     public LinearLayout toppings;
+    public Context context;
     public TextView name, categories, price, cancel, add, quantity;
     public ImageView vegetarian, plus, minus;
     SendOrderSubItem send_order_item = new SendOrderSubItem();
@@ -39,6 +42,7 @@ public class OrderItemViewHolder {
     }
 
     public void setupView(Context context, MenuItem item) {
+        this.context = context;
         send_order_item.food = item;
         send_order_item.quantity = 1;
 
@@ -70,6 +74,19 @@ public class OrderItemViewHolder {
     }
 
     public void setQuantityListeners() {
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity) context).displayFragment(DrawerItem.Tags.MENU);
+            }
+        });
+
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
