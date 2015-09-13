@@ -1,6 +1,7 @@
 package com.gymkhana.iitbeats.items;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by BijoySingh on 9/13/2015.
@@ -8,7 +9,5 @@ import java.util.List;
 public class SendOrderSubItem {
     public MenuItem food;
     public Integer quantity;
-    public List<Integer> toppings;
-
-
+    public Set<Integer> toppings = new HashSet<>();
 }

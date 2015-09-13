@@ -2,21 +2,25 @@ package com.gymkhana.iitbeats.viewholder;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.items.MenuItem;
+import com.gymkhana.iitbeats.items.SendOrderSubItem;
 import com.gymkhana.iitbeats.utils.SessionVariables;
 
 /**
  * Created by BijoySingh on 9/12/2015.
  */
 public class OrderItemViewHolder {
+
     public LinearLayout toppings;
     public TextView name, categories, price, cancel, add, quantity;
     public ImageView vegetarian, plus, minus;
+    SendOrderSubItem send_order_item = new SendOrderSubItem();
 
     public OrderItemViewHolder(View view) {
         name = (TextView) view.findViewById(R.id.name);
@@ -35,19 +39,32 @@ public class OrderItemViewHolder {
     }
 
     public void setupView(Context context, MenuItem item) {
+        send_order_item.food = item;
+        send_order_item.quantity = 1;
+
         name.setText(item.food_item.name);
         vegetarian.setImageResource(item.food_item.getVegetarianResource());
         categories.setText(item.food_item.getCategories());
-        quantity.setText("1");
+        quantity.setText(send_order_item.quantity.toString());
         price.setText(item.getPrice());
         setQuantityListeners();
         addToppings(context, item);
     }
 
     public void addToppings(Context context, MenuItem item) {
-        for (int topping_id : item.toppings) {
+        for (final Integer topping_id : item.toppings) {
             ToppingItemView item_view = new ToppingItemView(context);
             item_view.setup(SessionVariables.mToppingMapping.get(topping_id));
+            item_view.status.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked)
+                        send_order_item.toppings.add(topping_id);
+                    else
+                        send_order_item.toppings.remove(topping_id);
+
+                }
+            });
             toppings.addView(item_view);
         }
     }
@@ -56,20 +73,20 @@ public class OrderItemViewHolder {
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Integer final_quantity = (Integer.parseInt(quantity.getText().toString()) + 1);
-                final_quantity = Math.min(final_quantity, 10);
+                send_order_item.quantity = send_order_item.quantity + 1;
+                send_order_item.quantity = Math.min(send_order_item.quantity, 10);
 
-                quantity.setText(final_quantity.toString());
+                quantity.setText(send_order_item.quantity.toString());
             }
         });
 
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Integer final_quantity = (Integer.parseInt(quantity.getText().toString()) - 1);
-                final_quantity = Math.max(final_quantity, 1);
+                send_order_item.quantity = send_order_item.quantity - 1;
+                send_order_item.quantity = Math.max(send_order_item.quantity, 1);
 
-                quantity.setText(final_quantity.toString());
+                quantity.setText(send_order_item.quantity.toString());
             }
         });
     }
