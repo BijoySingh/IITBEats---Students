@@ -21,7 +21,7 @@ public class OrderItemViewHolder {
 
     public LinearLayout toppings;
     public Context context;
-    public TextView name, categories, price, cancel, add, quantity;
+    public TextView name, categories, price, cancel, add, quantity, net;
     public ImageView vegetarian, plus, minus;
     SendOrderSubItem send_order_item = new SendOrderSubItem();
 
@@ -33,6 +33,7 @@ public class OrderItemViewHolder {
         add = (TextView) view.findViewById(R.id.add);
         cancel = (TextView) view.findViewById(R.id.cancel);
         quantity = (TextView) view.findViewById(R.id.quantity);
+        net = (TextView) view.findViewById(R.id.net);
 
         vegetarian = (ImageView) view.findViewById(R.id.vegetarian);
         plus = (ImageView) view.findViewById(R.id.plus);
@@ -51,6 +52,7 @@ public class OrderItemViewHolder {
         categories.setText(item.food_item.getCategories());
         quantity.setText(send_order_item.quantity.toString());
         price.setText(item.getPrice());
+        net.setText(send_order_item.getCost().toString());
         setQuantityListeners();
         addToppings(context, item);
     }
@@ -66,7 +68,6 @@ public class OrderItemViewHolder {
                         send_order_item.toppings.add(topping_id);
                     else
                         send_order_item.toppings.remove(topping_id);
-
                 }
             });
             toppings.addView(item_view);
@@ -95,6 +96,7 @@ public class OrderItemViewHolder {
                 send_order_item.quantity = Math.min(send_order_item.quantity, 10);
 
                 quantity.setText(send_order_item.quantity.toString());
+                net.setText(send_order_item.getCost().toString());
             }
         });
 
@@ -105,6 +107,7 @@ public class OrderItemViewHolder {
                 send_order_item.quantity = Math.max(send_order_item.quantity, 1);
 
                 quantity.setText(send_order_item.quantity.toString());
+                net.setText(send_order_item.getCost().toString());
             }
         });
     }
