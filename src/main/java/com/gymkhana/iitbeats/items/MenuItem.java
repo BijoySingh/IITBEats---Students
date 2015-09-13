@@ -29,9 +29,13 @@ public class MenuItem implements Serializable {
         is_available = json.getBoolean(JsonKeys.IS_AVAILABLE);
         food_item = new FoodItem(json.getJSONObject(JsonKeys.FOOD));
 
-        JSONArray toppings_array = json.getJSONArray(JsonKeys.TOPPINGS);
-        for (int index = 0; index < toppings_array.length(); index++) {
-            toppings.add(toppings_array.getInt(index));
+        try {
+            JSONArray toppings_array = json.getJSONArray(JsonKeys.TOPPINGS);
+            for (int index = 0; index < toppings_array.length(); index++) {
+                toppings.add(toppings_array.getInt(index));
+            }
+        } catch (Exception e) {
+            ;
         }
     }
 

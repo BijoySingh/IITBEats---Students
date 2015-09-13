@@ -38,7 +38,7 @@ public class ToppingItemView extends LinearLayout {
 
     public void init(Context context) {
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = mInflater.inflate(R.layout.orders_item, this, true);
+        View view = mInflater.inflate(R.layout.topping_item, this, true);
 
         vegetarian = (ImageView) view.findViewById(R.id.vegetarian);
         status = (CheckBox) view.findViewById(R.id.food_checkbox);
