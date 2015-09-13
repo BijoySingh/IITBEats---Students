@@ -78,6 +78,7 @@ public class OrderItemViewHolder {
             @Override
             public void onClick(View v) {
                 SessionVariables.mSendOrder.items.add(send_order_item);
+                ((MainActivity) context).displayFragment(DrawerItem.Tags.MENU);
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
