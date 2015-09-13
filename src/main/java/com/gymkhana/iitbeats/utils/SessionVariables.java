@@ -5,6 +5,7 @@ import com.gymkhana.iitbeats.items.CategoryItem;
 import com.gymkhana.iitbeats.items.MenuItem;
 import com.gymkhana.iitbeats.items.OrdersItem;
 import com.gymkhana.iitbeats.items.SendOrderItem;
+import com.gymkhana.iitbeats.items.SendOrderSubItem;
 import com.gymkhana.iitbeats.items.ShopsItem;
 
 import java.util.List;
@@ -28,4 +29,10 @@ public class SessionVariables {
     public static Map<Integer, MenuItem> mToppingMapping;
 
     public static SendOrderItem mSendOrder;
+
+    public static void addItemToOrder(SendOrderSubItem item) {
+        if (mSendOrder == null)
+            mSendOrder = new SendOrderItem();
+        mSendOrder.items.add(item);
+    }
 }

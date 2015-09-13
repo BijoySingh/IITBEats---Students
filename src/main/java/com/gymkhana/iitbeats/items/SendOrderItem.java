@@ -11,4 +11,7 @@ public class SendOrderItem implements Serializable {
 
     public List<SendOrderSubItem> items = new ArrayList<>();
     public String comments;
+
+    public SendOrderItem() {
+    }
 }

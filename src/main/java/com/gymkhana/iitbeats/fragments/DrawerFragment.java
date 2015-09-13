@@ -105,6 +105,7 @@ public class DrawerFragment extends Fragment {
         mDrawerListView.add(new DrawerItem(DrawerItem.Tags.SHOPS, getString(R.string.drawer_shops), R.drawable.ic_store_black_36dp));
         mDrawerListView.add(new DrawerItem(DrawerItem.Tags.ORDERS, getString(R.string.drawer_orders), R.drawable.ic_dashboard_black_36dp));
         mDrawerListView.add(new DrawerItem(DrawerItem.Tags.BILLS, getString(R.string.drawer_bills), R.drawable.ic_payment_black_36dp));
+        mDrawerListView.add(new DrawerItem(DrawerItem.Tags.BILLS, getString(R.string.drawer_settings), R.drawable.ic_settings_black_48dp));
         mDrawerListView.add(new DrawerItem(DrawerItem.Tags.LOGOUT, getString(R.string.drawer_logout), R.drawable.ic_exit_to_app_black_36dp));
 
         DrawerAdapter adapter = new DrawerAdapter(getActivity(), mDrawerListView);
