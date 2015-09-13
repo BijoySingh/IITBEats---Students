@@ -54,8 +54,9 @@ public class ApiResponseUtility {
     }
 
     public static final void getShopMenu(String response) throws Exception {
-        SessionVariables.mMenuItems = parseMenuItem(response);
+        SessionVariables.mMenuItems = parseMenuItem(response, "menu");
         SessionVariables.mCategoryItems = parseCategoryItem(response);
+        SessionVariables.mToppingItems = parseMenuItem(response, "toppings");
 
         SessionVariables.mCategoryMapping = new HashMap<>();
         for (CategoryItem item : SessionVariables.mCategoryItems) {
@@ -63,9 +64,9 @@ public class ApiResponseUtility {
         }
     }
 
-    public static final List<MenuItem> parseMenuItem(String response) throws Exception {
+    public static final List<MenuItem> parseMenuItem(String response, String key) throws Exception {
         List<MenuItem> list = new ArrayList<>();
-        JSONArray data = new JSONObject(response).getJSONArray("menu");
+        JSONArray data = new JSONObject(response).getJSONArray(key);
         for (int index = 0; index < data.length(); index++) {
             JSONObject json = data.getJSONObject(index);
             MenuItem item = new MenuItem(json);
