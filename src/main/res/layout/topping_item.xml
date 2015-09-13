@@ -2,13 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="4sp"
+    android:paddingRight="8sp">
 
     <ImageView
         android:id="@+id/vegetarian"
-        android:layout_width="24sp"
-        android:layout_height="24sp"
-        android:layout_gravity="right"
+        android:layout_width="28sp"
+        android:layout_height="28sp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         android:padding="4sp"
         android:src="@drawable/vegetarian" />
 
@@ -16,13 +21,17 @@
         android:id="@+id/food_checkbox"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:gravity="center_vertical"
         android:text="" />
 
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         android:textColor="@color/secondary_text"
         android:textSize="18sp"
         android:textStyle="bold" />
