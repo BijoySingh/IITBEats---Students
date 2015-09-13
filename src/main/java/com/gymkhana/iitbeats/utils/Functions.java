@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.items.MenuItem;
-import com.gymkhana.iitbeats.viewholder.DialogViewHolder;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -229,15 +228,11 @@ public class Functions {
 
 
     public static Dialog createOrderDialog(Context context, MenuItem item) {
-        final Dialog dialog = getTransparentDialog(context, R.layout.order_dialog,
+        final Dialog dialog = getTransparentDialog(context, R.layout.order_layout,
                 Color.TRANSPARENT);
-        DialogViewHolder holder = new DialogViewHolder(dialog);
-        holder.name.setText(item.food_item.name);
-        holder.vegetarian.setImageResource(item.food_item.getVegetarianResource());
-        holder.categories.setText(item.food_item.getCategories());
-        holder.quantity.setText("1");
-        holder.price.setText(item.getPrice());
-        holder.setQuantityListeners();
+        /*OrderItemViewHolder holder = new OrderItemViewHolder(dialog);
+        holder.setupView(item);
+        holder.setQuantityListeners();*/
         return dialog;
     }
 

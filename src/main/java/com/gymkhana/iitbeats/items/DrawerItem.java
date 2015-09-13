@@ -22,5 +22,6 @@ public class DrawerItem implements Serializable {
         public static final Integer LOGOUT = 4;
         public static final Integer LOGIN = 5;
         public static final Integer CATEGORIES = 6;
+        public static final Integer ORDER_ITEM = 7;
     }
 }

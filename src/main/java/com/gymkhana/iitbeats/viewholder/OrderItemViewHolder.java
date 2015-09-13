@@ -1,31 +1,40 @@
 package com.gymkhana.iitbeats.viewholder;
 
-import android.app.Dialog;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gymkhana.iitbeats.R;
+import com.gymkhana.iitbeats.items.MenuItem;
 
 /**
  * Created by BijoySingh on 9/12/2015.
  */
-public class DialogViewHolder {
+public class OrderItemViewHolder {
     public TextView name, categories, price, cancel, add, quantity;
     public ImageView vegetarian, plus, minus;
 
-    public DialogViewHolder(Dialog dialog) {
-        name = (TextView) dialog.findViewById(R.id.name);
-        price = (TextView) dialog.findViewById(R.id.price);
-        categories = (TextView) dialog.findViewById(R.id.categories);
+    public OrderItemViewHolder(View view) {
+        name = (TextView) view.findViewById(R.id.name);
+        price = (TextView) view.findViewById(R.id.price);
+        categories = (TextView) view.findViewById(R.id.categories);
 
-        add = (TextView) dialog.findViewById(R.id.add);
-        cancel = (TextView) dialog.findViewById(R.id.cancel);
-        quantity = (TextView) dialog.findViewById(R.id.quantity);
+        add = (TextView) view.findViewById(R.id.add);
+        cancel = (TextView) view.findViewById(R.id.cancel);
+        quantity = (TextView) view.findViewById(R.id.quantity);
 
-        vegetarian = (ImageView) dialog.findViewById(R.id.vegetarian);
-        plus = (ImageView) dialog.findViewById(R.id.plus);
-        minus = (ImageView) dialog.findViewById(R.id.minus);
+        vegetarian = (ImageView) view.findViewById(R.id.vegetarian);
+        plus = (ImageView) view.findViewById(R.id.plus);
+        minus = (ImageView) view.findViewById(R.id.minus);
+    }
+
+    public void setupView(MenuItem item) {
+        name.setText(item.food_item.name);
+        vegetarian.setImageResource(item.food_item.getVegetarianResource());
+        categories.setText(item.food_item.getCategories());
+        quantity.setText("1");
+        price.setText(item.getPrice());
+        setQuantityListeners();
     }
 
     public void setQuantityListeners() {

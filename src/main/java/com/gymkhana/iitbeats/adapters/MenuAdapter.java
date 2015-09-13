@@ -1,6 +1,5 @@
 package com.gymkhana.iitbeats.adapters;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.URLUtil;
 
+import com.gymkhana.iitbeats.MainActivity;
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.fragments.RefreshBasedFragment;
+import com.gymkhana.iitbeats.items.DrawerItem;
 import com.gymkhana.iitbeats.items.MenuItem;
 import com.gymkhana.iitbeats.utils.Functions;
 import com.gymkhana.iitbeats.viewholder.MenuViewHolder;
@@ -58,8 +59,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog = Functions.createOrderDialog(mContext, data);
-                dialog.show();
+                ((MainActivity) mContext).displayFragment(DrawerItem.Tags.ORDER_ITEM, data);
             }
         });
     }

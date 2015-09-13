@@ -19,10 +19,13 @@ import com.gymkhana.iitbeats.fragments.BlankFragment;
 import com.gymkhana.iitbeats.fragments.CategoryFragment;
 import com.gymkhana.iitbeats.fragments.DrawerFragment;
 import com.gymkhana.iitbeats.fragments.MenuFragment;
+import com.gymkhana.iitbeats.fragments.OrderItemFragment;
 import com.gymkhana.iitbeats.fragments.OrdersFragment;
 import com.gymkhana.iitbeats.fragments.ShopsFragment;
 import com.gymkhana.iitbeats.items.DrawerItem;
 import com.gymkhana.iitbeats.utils.Functions;
+
+import java.io.Serializable;
 
 public class MainActivity extends ActionBarActivity implements DrawerFragment.OnFragmentInteractionListener {
 
@@ -66,9 +69,20 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
         displayFragment(DrawerItem.Tags.CATEGORIES);
     }
 
+    private void switchFragment(Fragment fragment) {
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.page_fragment, fragment)
+                    .commit();
+            mDrawerFragment.mDrawerLayout.closeDrawers();
+        } else {
+            Log.e("MainActivity", "Error in creating fragment");
+        }
+    }
+
     public void displayFragment(Integer id) {
         Fragment fragment = null;
-        Bundle bundle = new Bundle();
         mFragmentPosition = id;
 
         if (id == DrawerItem.Tags.MENU) {
@@ -84,24 +98,29 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
         } else {
             fragment = new BlankFragment();
         }
+        switchFragment(fragment);
+    }
+
+    public void displayFragment(Integer id, Serializable data) {
+        Fragment fragment = null;
+        Bundle bundle = new Bundle();
+        mFragmentPosition = id;
+
+        if (id == DrawerItem.Tags.ORDER_ITEM) {
+            fragment = new OrderItemFragment();
+            bundle.putSerializable(OrderItemFragment.MENU_ITEM, data);
+        }
 
         fragment.setArguments(bundle);
-
-        if (fragment != null) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.page_fragment, fragment)
-                    .commit();
-            mDrawerFragment.mDrawerLayout.closeDrawers();
-        } else {
-            Log.e("MainActivity", "Error in creating fragment");
-        }
+        switchFragment(fragment);
     }
 
     @Override
     public void onBackPressed() {
         if (mFragmentPosition == DrawerItem.Tags.CATEGORIES) {
             finish();
+        } else if (mFragmentPosition == DrawerItem.Tags.ORDER_ITEM) {
+            displayFragment(DrawerItem.Tags.MENU);
         } else {
             displayFragment(DrawerItem.Tags.CATEGORIES);
         }
