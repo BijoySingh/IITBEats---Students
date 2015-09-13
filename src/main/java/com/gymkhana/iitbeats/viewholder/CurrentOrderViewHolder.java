@@ -35,7 +35,7 @@ public class CurrentOrderViewHolder extends LinearLayout {
 
     public CurrentOrderViewHolder init(Context context) {
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = mInflater.inflate(R.layout.topping_item, this, true);
+        View view = mInflater.inflate(R.layout.orders_item, this, true);
 
         name = (TextView) view.findViewById(R.id.name);
         quantity = (TextView) view.findViewById(R.id.quantity);
@@ -54,7 +54,7 @@ public class CurrentOrderViewHolder extends LinearLayout {
         name.setText(item.food.food_item.name);
         vegetarian.setImageResource(item.food.food_item.getVegetarianResource());
         quantity.setText(item.quantity.toString());
-        toppings.setText(item.getIndianCost());
-        cost.setText(item.getToppings());
+        toppings.setText(item.getToppings());
+        cost.setText(item.getIndianCost());
     }
 }

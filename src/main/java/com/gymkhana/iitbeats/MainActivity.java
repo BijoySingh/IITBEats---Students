@@ -153,6 +153,12 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
         menu_item.setActionView(R.layout.actionbar_cart_icon);
         LinearLayout badge = (LinearLayout) menu_item.getActionView();
         mOrderBadge = (TextView) badge.findViewById(R.id.badge);
+        badge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayFragment(DrawerItem.Tags.CART);
+            }
+        });
         updateOrderBadge();
 
         return true;
@@ -168,8 +174,6 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
                 mDrawerFragment.mDrawerLayout.openDrawer(Gravity.LEFT);
             }
             return true;
-        } else if (id == R.id.action_cart) {
-            displayFragment(DrawerItem.Tags.CART);
         }
 
         return super.onOptionsItemSelected(item);
