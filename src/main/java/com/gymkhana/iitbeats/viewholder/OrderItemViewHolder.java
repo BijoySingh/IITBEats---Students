@@ -52,9 +52,13 @@ public class OrderItemViewHolder {
         categories.setText(item.food_item.getCategories());
         quantity.setText(send_order_item.quantity.toString());
         price.setText(item.getPrice());
-        net.setText(send_order_item.getCost().toString());
+        updateCost();
         setQuantityListeners();
         addToppings(context, item);
+    }
+
+    public void updateCost() {
+        net.setText(send_order_item.getIndianCost());
     }
 
     public void addToppings(Context context, MenuItem item) {
@@ -68,6 +72,7 @@ public class OrderItemViewHolder {
                         send_order_item.toppings.add(topping_id);
                     else
                         send_order_item.toppings.remove(topping_id);
+                    updateCost();
                 }
             });
             toppings.addView(item_view);
@@ -96,7 +101,7 @@ public class OrderItemViewHolder {
                 send_order_item.quantity = Math.min(send_order_item.quantity, 10);
 
                 quantity.setText(send_order_item.quantity.toString());
-                net.setText(send_order_item.getCost().toString());
+                updateCost();
             }
         });
 
@@ -107,7 +112,7 @@ public class OrderItemViewHolder {
                 send_order_item.quantity = Math.max(send_order_item.quantity, 1);
 
                 quantity.setText(send_order_item.quantity.toString());
-                net.setText(send_order_item.getCost().toString());
+                updateCost();
             }
         });
     }

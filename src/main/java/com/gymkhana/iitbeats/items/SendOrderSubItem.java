@@ -22,4 +22,8 @@ public class SendOrderSubItem {
         cost *= quantity;
         return cost;
     }
+
+    public String getIndianCost() {
+        return "\u20B9 " + getCost().toString();
+    }
 }
