@@ -9,6 +9,6 @@ import java.util.List;
  */
 public class SendOrderItem implements Serializable {
 
-    List<SendOrderSubItem> items = new ArrayList<>();
-    String comments;
+    public List<SendOrderSubItem> items = new ArrayList<>();
+    public String comments;
 }
