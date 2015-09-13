@@ -28,11 +28,9 @@ public class SessionVariables {
     public static Map<Integer, CategoryItem> mCategoryMapping;
     public static Map<Integer, MenuItem> mToppingMapping;
 
-    public static SendOrderItem mSendOrder;
+    public static SendOrderItem mSendOrder = new SendOrderItem();
 
     public static void addItemToOrder(SendOrderSubItem item) {
-        if (mSendOrder == null)
-            mSendOrder = new SendOrderItem();
         mSendOrder.items.add(item);
     }
 }

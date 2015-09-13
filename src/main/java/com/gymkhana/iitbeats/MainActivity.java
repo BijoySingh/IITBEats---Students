@@ -12,8 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gymkhana.iitbeats.fragments.BillsFragment;
@@ -144,9 +144,13 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        RelativeLayout badgeLayout = (RelativeLayout)
-                menu.findItem(R.id.action_cart).getActionView();
-        mOrderBadge = (TextView) badgeLayout.findViewById(R.id.badge);
+        final Menu actionbar_menu = menu;
+        final MenuItem menu_item = menu.findItem(R.id.action_cart);
+
+        menu_item.setActionView(R.layout.actionbar_cart_icon);
+        LinearLayout badge = (LinearLayout) menu_item.getActionView();
+        mOrderBadge = (TextView) badge.findViewById(R.id.badge);
+        updateOrderBadge();
 
         return true;
     }
