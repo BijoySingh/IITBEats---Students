@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/vegetarian"
-        android:layout_width="28sp"
-        android:layout_height="28sp"
+        android:layout_width="24sp"
+        android:layout_height="24sp"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
         android:padding="4sp"
