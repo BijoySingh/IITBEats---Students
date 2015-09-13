@@ -20,10 +20,10 @@ public class SendOrderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.order_layout, container, false);
-        
+
         for (SendOrderSubItem item : SessionVariables.mSendOrder.items) {
             CurrentOrderViewHolder holder = new CurrentOrderViewHolder(getContext());
-            holder.init().setupView(getContext(), item);
+            holder.init(getContext()).setupView(getContext(), item);
         }
 
         return rootView;

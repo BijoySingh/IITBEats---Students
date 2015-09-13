@@ -2,6 +2,8 @@ package com.gymkhana.iitbeats.viewholder;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,15 +33,18 @@ public class CurrentOrderViewHolder extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    public CurrentOrderViewHolder init() {
-        name = (TextView) findViewById(R.id.name);
-        quantity = (TextView) findViewById(R.id.quantity);
-        vegetarian = (ImageView) findViewById(R.id.vegetarian);
-        toppings = (TextView) findViewById(R.id.toppings);
-        cost = (TextView) findViewById(R.id.cost);
+    public CurrentOrderViewHolder init(Context context) {
+        LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = mInflater.inflate(R.layout.topping_item, this, true);
 
-        delete = (TextView) findViewById(R.id.delete);
-        update = (TextView) findViewById(R.id.update);
+        name = (TextView) view.findViewById(R.id.name);
+        quantity = (TextView) view.findViewById(R.id.quantity);
+        vegetarian = (ImageView) view.findViewById(R.id.vegetarian);
+        toppings = (TextView) view.findViewById(R.id.toppings);
+        cost = (TextView) view.findViewById(R.id.cost);
+
+        delete = (TextView) view.findViewById(R.id.delete);
+        update = (TextView) view.findViewById(R.id.update);
 
         return this;
     }
