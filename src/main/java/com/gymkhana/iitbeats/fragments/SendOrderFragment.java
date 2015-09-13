@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.items.SendOrderSubItem;
@@ -19,11 +20,13 @@ public class SendOrderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.order_layout, container, false);
+        View rootView = inflater.inflate(R.layout.current_order_layout, container, false);
 
+        LinearLayout order = (LinearLayout) rootView.findViewById(R.id.order);
         for (SendOrderSubItem item : SessionVariables.mSendOrder.items) {
             CurrentOrderViewHolder holder = new CurrentOrderViewHolder(getContext());
             holder.init(getContext()).setupView(getContext(), item);
+            order.addView(holder);
         }
 
         return rootView;
