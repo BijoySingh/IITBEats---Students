@@ -1,5 +1,6 @@
 package com.gymkhana.iitbeats.items;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -14,16 +15,22 @@ public class MenuItem implements Serializable {
     public Double price;
     public Boolean is_available;
     public FoodItem food_item;
+    public List<Integer> toppings = new ArrayList<>();
 
     public MenuItem() {
     }
 
     public MenuItem(JSONObject json) throws Exception {
         id = json.getInt(JsonKeys.ID);
-        shop_id = json.getInt(JsonKeys.SHOP_ID);
+        // shop_id = json.getInt(JsonKeys.SHOP);
         price = json.getDouble(JsonKeys.PRICE);
-        is_available = json.getBoolean(JsonKeys.AVAILABLE);
+        is_available = json.getBoolean(JsonKeys.IS_AVAILABLE);
         food_item = new FoodItem(json.getJSONObject(JsonKeys.FOOD));
+
+        JSONArray toppings_array = json.getJSONArray(JsonKeys.TOPPINGS);
+        for (int index = 0; index < toppings_array.length(); index++) {
+            toppings.add(toppings_array.getInt(index));
+        }
     }
 
     public static List<MenuItem> filterMenu(List<MenuItem> source, Integer category) {
@@ -42,10 +49,11 @@ public class MenuItem implements Serializable {
 
     public static final class JsonKeys {
         public static final String ID = "id";
-        public static final String FOOD = "food";
-        public static final String SHOP_ID = "shop_id";
+        public static final String FOOD = "food_item";
+        public static final String SHOP = "shop";
+        public static final String TOPPINGS = "toppings";
         public static final String PRICE = "price";
-        public static final String AVAILABLE = "available";
+        public static final String IS_AVAILABLE = "is_available";
     }
 
 }

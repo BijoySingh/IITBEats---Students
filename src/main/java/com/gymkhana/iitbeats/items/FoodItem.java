@@ -25,7 +25,7 @@ public class FoodItem implements Serializable {
         id = json.getInt(JsonKeys.ID);
         name = json.getString(JsonKeys.NAME);
         image = json.getString(JsonKeys.IMAGE);
-        is_vegetarian = json.getBoolean(JsonKeys.VEGETARIAN);
+        is_vegetarian = json.getBoolean(JsonKeys.IS_VEG);
 
         JSONArray categories_array = json.getJSONArray(JsonKeys.CATEGORIES);
         for (int index = 0; index < categories_array.length(); index++) {
@@ -53,7 +53,7 @@ public class FoodItem implements Serializable {
         public static final String ID = "id";
         public static final String NAME = "name";
         public static final String IMAGE = "image";
-        public static final String VEGETARIAN = "vegetarian";
+        public static final String IS_VEG = "is_veg";
         public static final String CATEGORIES = "categories";
     }
 }
