@@ -123,6 +123,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8sp"
+                    android:text="@string/toppings"
+                    android:textColor="@color/hint_text"
+                    android:textSize="14sp" />
+
             </LinearLayout>
         </android.support.v7.widget.CardView>
 

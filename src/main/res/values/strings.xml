@@ -12,6 +12,7 @@
     <string name="add">ADD</string>
     <string name="cancel">CANCEL</string>
     <string name="quantity">QUANTITY</string>
+    <string name="toppings">TOPPINGS</string>
     <string name="add_to_plate">ADD TO PLATE</string>
 
 </resources>
