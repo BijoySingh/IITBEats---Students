@@ -1,16 +1,20 @@
 package com.gymkhana.iitbeats.viewholder;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.items.MenuItem;
+import com.gymkhana.iitbeats.utils.SessionVariables;
 
 /**
  * Created by BijoySingh on 9/12/2015.
  */
 public class OrderItemViewHolder {
+    public LinearLayout toppings;
     public TextView name, categories, price, cancel, add, quantity;
     public ImageView vegetarian, plus, minus;
 
@@ -26,15 +30,26 @@ public class OrderItemViewHolder {
         vegetarian = (ImageView) view.findViewById(R.id.vegetarian);
         plus = (ImageView) view.findViewById(R.id.plus);
         minus = (ImageView) view.findViewById(R.id.minus);
+
+        toppings = (LinearLayout) view.findViewById(R.id.toppings);
     }
 
-    public void setupView(MenuItem item) {
+    public void setupView(Context context, MenuItem item) {
         name.setText(item.food_item.name);
         vegetarian.setImageResource(item.food_item.getVegetarianResource());
         categories.setText(item.food_item.getCategories());
         quantity.setText("1");
         price.setText(item.getPrice());
         setQuantityListeners();
+        addToppings(context, item);
+    }
+
+    public void addToppings(Context context, MenuItem item) {
+        for (int topping_id : item.toppings) {
+            ToppingItemView item_view = new ToppingItemView(context);
+            item_view.setup(SessionVariables.mToppingMapping.get(topping_id));
+            toppings.addView(item_view);
+        }
     }
 
     public void setQuantityListeners() {

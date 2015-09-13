@@ -28,7 +28,7 @@ public class OrderItemFragment extends Fragment {
         mMenuItem = (MenuItem) arguments.getSerializable(MENU_ITEM);
 
         mHolder = new OrderItemViewHolder(rootView);
-        mHolder.setupView(mMenuItem);
+        mHolder.setupView(getContext(), mMenuItem);
 
         return rootView;
     }
