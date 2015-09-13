@@ -16,6 +16,7 @@
     <string name="quantity">QUANTITY</string>
     <string name="net">NET TOTAL</string>
     <string name="toppings">TOPPINGS</string>
+    <string name="your_plate">YOUR PLATE</string>
     <string name="add_to_plate">ADD TO PLATE</string>
 
 </resources>
