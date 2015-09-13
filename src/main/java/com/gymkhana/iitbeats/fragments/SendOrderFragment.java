@@ -2,6 +2,7 @@ package com.gymkhana.iitbeats.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.items.SendOrderSubItem;
+import com.gymkhana.iitbeats.utils.Functions;
 import com.gymkhana.iitbeats.utils.SessionVariables;
 import com.gymkhana.iitbeats.viewholder.CurrentOrderViewHolder;
 
@@ -28,6 +30,8 @@ public class SendOrderFragment extends Fragment {
             holder.init(getContext()).setupView(getContext(), item);
             order.addView(holder);
         }
+
+        Functions.setActionBarTitle((ActionBarActivity) getActivity(), getString(R.string.drawer_plate));
 
         return rootView;
     }

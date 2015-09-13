@@ -174,6 +174,8 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
                 mDrawerFragment.mDrawerLayout.openDrawer(Gravity.LEFT);
             }
             return true;
+        } else if (id == R.id.action_cart) {
+            displayFragment(DrawerItem.Tags.CART);
         }
 
         return super.onOptionsItemSelected(item);

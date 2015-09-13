@@ -62,6 +62,10 @@ public class OrderItemViewHolder {
     }
 
     public void addToppings(Context context, MenuItem item) {
+        if (item.toppings.isEmpty()) {
+            toppings.setVisibility(View.GONE);
+        }
+
         for (final Integer topping_id : item.toppings) {
             ToppingItemView item_view = new ToppingItemView(context);
             item_view.setup(SessionVariables.mToppingMapping.get(topping_id));
