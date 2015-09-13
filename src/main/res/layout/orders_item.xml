@@ -45,6 +45,13 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/toppings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/accent_color"
+                android:textSize="12sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,7 +68,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/price"
+                    android:id="@+id/quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/secondary_text"
@@ -96,7 +103,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/edit"
+                    android:id="@+id/update"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"

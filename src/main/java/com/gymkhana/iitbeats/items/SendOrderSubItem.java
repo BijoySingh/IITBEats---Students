@@ -1,8 +1,12 @@
 package com.gymkhana.iitbeats.items;
 
+import android.text.TextUtils;
+
 import com.gymkhana.iitbeats.utils.SessionVariables;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -25,5 +29,13 @@ public class SendOrderSubItem {
 
     public String getIndianCost() {
         return "\u20B9 " + getCost().toString();
+    }
+
+    public String getToppings() {
+        List<String> list = new ArrayList<>();
+        for (Integer topping_id : toppings) {
+            list.add(SessionVariables.mToppingMapping.get(topping_id).food_item.name);
+        }
+        return TextUtils.join(", ", list);
     }
 }
