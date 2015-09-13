@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="48dp"
+    android:layout_height="fill_parent"
+    android:layout_gravity="right">
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:src="@drawable/ic_local_dining_white_48dp" />
+
+    <!-- Badge Count -->
+    <TextView
+        android:id="@+id/badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:padding="4sp"
+        android:text="99"
+        android:textColor="@color/accent_color" />
+
+</RelativeLayout>

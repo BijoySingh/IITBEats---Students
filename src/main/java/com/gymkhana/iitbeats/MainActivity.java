@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.gymkhana.iitbeats.fragments.BillsFragment;
 import com.gymkhana.iitbeats.fragments.BlankFragment;
@@ -24,6 +26,7 @@ import com.gymkhana.iitbeats.fragments.OrdersFragment;
 import com.gymkhana.iitbeats.fragments.ShopsFragment;
 import com.gymkhana.iitbeats.items.DrawerItem;
 import com.gymkhana.iitbeats.utils.Functions;
+import com.gymkhana.iitbeats.utils.SessionVariables;
 
 import java.io.Serializable;
 
@@ -32,6 +35,7 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
     private Context mContext;
     private DrawerFragment mDrawerFragment;
     private Integer mFragmentPosition;
+    private TextView mOrderBadge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,9 +136,18 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
     public void firstTimeSetup() {
     }
 
+    public void updateOrderBadge() {
+        mOrderBadge.setText("" + SessionVariables.mSendOrder.items.size());
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        RelativeLayout badgeLayout = (RelativeLayout)
+                menu.findItem(R.id.action_cart).getActionView();
+        mOrderBadge = (TextView) badgeLayout.findViewById(R.id.badge);
+
         return true;
     }
 

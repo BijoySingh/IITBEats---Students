@@ -84,6 +84,7 @@ public class OrderItemViewHolder {
             @Override
             public void onClick(View v) {
                 SessionVariables.addItemToOrder(send_order_item);
+                ((MainActivity) context).updateOrderBadge();
                 ((MainActivity) context).displayFragment(DrawerItem.Tags.MENU);
             }
         });
