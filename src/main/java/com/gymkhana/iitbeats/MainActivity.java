@@ -23,6 +23,7 @@ import com.gymkhana.iitbeats.fragments.DrawerFragment;
 import com.gymkhana.iitbeats.fragments.MenuFragment;
 import com.gymkhana.iitbeats.fragments.OrderItemFragment;
 import com.gymkhana.iitbeats.fragments.OrdersFragment;
+import com.gymkhana.iitbeats.fragments.SendOrderFragment;
 import com.gymkhana.iitbeats.fragments.ShopsFragment;
 import com.gymkhana.iitbeats.items.DrawerItem;
 import com.gymkhana.iitbeats.utils.Functions;
@@ -99,6 +100,8 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
             fragment = new BillsFragment();
         } else if (id == DrawerItem.Tags.CATEGORIES) {
             fragment = new CategoryFragment();
+        } else if (id == DrawerItem.Tags.CART) {
+            fragment = new SendOrderFragment();
         } else {
             fragment = new BlankFragment();
         }
@@ -165,6 +168,8 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
                 mDrawerFragment.mDrawerLayout.openDrawer(Gravity.LEFT);
             }
             return true;
+        } else if (id == R.id.action_cart) {
+            displayFragment(DrawerItem.Tags.CART);
         }
 
         return super.onOptionsItemSelected(item);
