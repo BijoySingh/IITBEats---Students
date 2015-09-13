@@ -32,6 +32,10 @@ public class SendOrderSubItem {
     }
 
     public String getToppings() {
+        if (toppings.size() == 0) {
+            return "None";
+        }
+
         List<String> list = new ArrayList<>();
         for (Integer topping_id : toppings) {
             list.add(SessionVariables.mToppingMapping.get(topping_id).food_item.name);
