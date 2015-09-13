@@ -10,6 +10,8 @@
 
     <string name="done">DONE</string>
     <string name="add">ADD</string>
+    <string name="update">UPDATE</string>
+    <string name="delete">DELETE</string>
     <string name="cancel">CANCEL</string>
     <string name="quantity">QUANTITY</string>
     <string name="net">NET TOTAL</string>
