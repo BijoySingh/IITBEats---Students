@@ -28,8 +28,10 @@ public class ApiUtility {
                         .Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        fragment.stopRefreshIndicator();
-                        ApiResponseUtility.parseResponse(response, item, fragment);
+                        if (fragment != null) {
+                            fragment.stopRefreshIndicator();
+                            ApiResponseUtility.parseResponse(response, item, fragment);
+                        }
                         if (item.filename != null) {
                             Functions.offlineDataWriter(item.context, item.filename,
                                     Functions.correctUTFEncoding(response));
