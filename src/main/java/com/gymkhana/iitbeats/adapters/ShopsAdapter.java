@@ -6,9 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gymkhana.iitbeats.MainActivity;
 import com.gymkhana.iitbeats.R;
 import com.gymkhana.iitbeats.fragments.RefreshBasedFragment;
+import com.gymkhana.iitbeats.items.DrawerItem;
 import com.gymkhana.iitbeats.items.ShopsItem;
+import com.gymkhana.iitbeats.utils.SessionVariables;
 import com.gymkhana.iitbeats.viewholder.ShopsViewHolder;
 
 /**
@@ -42,6 +45,18 @@ public class ShopsAdapter extends RecyclerView.Adapter<ShopsViewHolder> {
         holder.call.setColorFilter(data.getStatusColor());
         holder.thumbnail.setImageResource(data.getStoreImage(position));
         holder.setCallListener(mContext, data.phone);
+
+        View.OnClickListener openShopMenu = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SessionVariables.setActiveShop(mContext, data);
+                ((MainActivity) mContext).displayFragment(DrawerItem.Tags.CATEGORIES);
+            }
+        };
+
+        holder.title.setOnClickListener(openShopMenu);
+        holder.address.setOnClickListener(openShopMenu);
+        holder.thumbnail.setOnClickListener(openShopMenu);
     }
 
     @Override

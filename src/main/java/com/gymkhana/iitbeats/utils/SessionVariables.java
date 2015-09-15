@@ -75,4 +75,9 @@ public class SessionVariables {
         }
         return mActiveShop.id;
     }
+
+    public static void setActiveShop(Context context, ShopsItem shop) {
+        mActiveShop = shop;
+        LocalData.save(context, LocalData.Tags.ACTIVE_SHOP_ID, shop.id);
+    }
 }
