@@ -71,7 +71,16 @@ public class MainActivity extends ActionBarActivity implements DrawerFragment.On
             }
         });
 
-        displayFragment(DrawerItem.Tags.CATEGORIES);
+        displayStartFragment();
+    }
+
+    private void displayStartFragment() {
+        Integer shop_id = SessionVariables.getActiveShopId(mContext);
+        if (shop_id == null) {
+            displayFragment(DrawerItem.Tags.SHOPS);
+        } else {
+            displayFragment(DrawerItem.Tags.CATEGORIES);
+        }
     }
 
     private void switchFragment(Fragment fragment) {

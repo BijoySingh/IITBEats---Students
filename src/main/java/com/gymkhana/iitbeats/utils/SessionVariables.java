@@ -22,12 +22,14 @@ import java.util.Map;
  */
 public class SessionVariables {
     public static Integer mCategoryId = 0;
+
     public static List<ShopsItem> mShopsItems;
     public static List<MenuItem> mMenuItems;
     public static List<MenuItem> mToppingItems;
     public static List<CategoryItem> mCategoryItems;
     public static List<OrdersItem> mOrderItems;
     public static List<BillsItem> mBillsItems;
+
     public static Map<Integer, CategoryItem> mCategoryMapping;
     public static Map<Integer, MenuItem> mToppingMapping;
     public static SendOrderItem mSendOrder = new SendOrderItem();
